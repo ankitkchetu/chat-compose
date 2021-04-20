@@ -87,6 +87,7 @@ export const leftPalateConstants = {
              "nextNodeHints": "Next node should be either Bot Send or Actions nodes",
              "type":"selectorNodeStart",
              "image":"eye.svg",
+             "subtype":"start",
              "class":"blockyGrey"
           },
           {
@@ -142,7 +143,7 @@ export const leftPalateConstants = {
       "data":{
          "label":"Start",
          "description":"Next node should be either Bot Send or Actions nodes",
-         "subtype":"",
+         "subtype":"start",
          "type":"node",
          "image":"eye.svg",
          "class":"blockyGrey"
