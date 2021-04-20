@@ -1,4 +1,27 @@
 
+import TextNode from '../nodes/TextNode';
+import MediaNode from '../nodes/MediaNode';
+import SuggestionChipsNode from '../nodes/SuggestionChipsNode';
+import CarouselChipsNode from '../nodes/CarouselChipsNode';
+import Userinput from '../nodes/Userinput';
+import StartNode from '../nodes/StartNode';
+import ToAgentNode from '../nodes/ToAgentNode';
+import ApiCallingNode from '../nodes/ApiCallingNode';
+import ScriptNode from '../nodes/ScriptNode';
+import StopNode from '../nodes/StopNode';
+
+export const NodeTypes = {
+   selectorText:TextNode,
+   selectorMedia:MediaNode,
+   selectorSuggestionChips:SuggestionChipsNode,
+   selectorCarouselChips:CarouselChipsNode,
+   selectorUserInput: Userinput,
+   selectorNodeStart: StartNode,
+   selectorToAgent:ToAgentNode,
+   selectorApiCalling:ApiCallingNode,
+   selectorScriptNode:ScriptNode,
+   selectorStop: StopNode,
+ }
 export const leftPalateConstants = {
     "send":{
        "title":"Bot Send",
@@ -7,7 +30,7 @@ export const leftPalateConstants = {
              "label":"Text",
              "description": "Send user a text message",
              "nextNodeHints": "Next should be User Input",
-             "type":"selectorInput",
+             "type":"selectorText",
              "image":"eye.svg",
              "subtype":"text",
              "class":"blockyBlue"
@@ -16,7 +39,7 @@ export const leftPalateConstants = {
              "label":"Multimedia",
              "description": "Send user a multimedia link",
              "nextNodeHints": "Next should be User Input",
-             "type":"selectorInput",
+             "type":"selectorMedia",
              "image":"database.svg",
              "subtype":"multimedia",
              "class":"blockyBlue"
@@ -25,7 +48,7 @@ export const leftPalateConstants = {
              "label":"Suggestion Cips",
              "description": "Send users mulltiple suggestions",
              "nextNodeHints": "Next should be User Input",
-             "type":"selectorInput",
+             "type":"selectorSuggestionChips",
              "subtype":"suggestionchip",
              "image":"time.svg",
              "class":"blockyBlue"
@@ -34,7 +57,7 @@ export const leftPalateConstants = {
              "label":"Carousel Cips",
              "description": "Send user multiple card options",
              "nextNodeHints": "Next should be User Input",
-             "type":"selectorInput",
+             "type":"selectorCarouselChips",
              "subtype":"carousel",
              "image":"error.svg",
              "class":"blockyBlue"
@@ -71,7 +94,7 @@ export const leftPalateConstants = {
              "subtype":"toagent",
              "description": "Transfer current conversation to agent",
              "nextNodeHints": "Next node could be anything",
-             "type":"selectorInput",
+             "type":"selectorToAgent",
              "image":"action.svg",
              "class":"blockyGrey"
           },
@@ -80,7 +103,7 @@ export const leftPalateConstants = {
              "subtype":"apicalling",
              "description": "GET and POST method allowed. Request and response are json",
              "nextNodeHints": "Next node could be anything",
-             "type":"selectorInput",
+             "type":"selectorApiCalling",
              "image":"action.svg",
              "class":"blockyGrey"
           },
@@ -89,7 +112,7 @@ export const leftPalateConstants = {
              "subtype":"scriptnode",
              "description": "Process input data and set result to output variables",
              "nextNodeHints": "Next node could be anything",
-             "type":"selectorInput",
+             "type":"selectorScriptNode",
              "image":"action.svg",
              "class":"blockyGrey"
           },
@@ -126,3 +149,4 @@ export const leftPalateConstants = {
       }
    }
 ];
+

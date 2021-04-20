@@ -11,12 +11,7 @@ import ReactFlow, {
 import {Propwrap} from './Propwrap'
 import {Navigation} from './Navigation'
 
-import TwoInput from './Twoinput';
-import StartInput from './Startinput';
-import Stopinput from './Stopinput';
-import Userinput from './Userinput';
-
-import {initialCanvasValue} from './constants/Constants'; 
+import {initialCanvasValue,NodeTypes} from './constants/Constants'; 
 import ls from 'local-storage'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
@@ -25,12 +20,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 const data = initialCanvasValue;
 
-const nodeTypes = {
-  selectorInput: TwoInput,
-  selectorNodeStart: StartInput,
-  selectorStop: Stopinput,
-  selectorUserInput: Userinput
-};
+const nodeTypes = NodeTypes;
 
 
   let id = 1;
