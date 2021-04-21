@@ -170,51 +170,6 @@ export class multimedia extends Component {
                                 )
                                 }
                             })()}
-                            {(this.state.element&&this.state.element.data)&&(this.state.element.data.subtype==='suggestionchip'||this.state.element.data.subtype==='carousel')&&this.state.rowChip.map((x, i) => {
-                                    return (
-                                    <div key={`card_`+i} className="box">
-                                        {this.state.element&&this.state.element.data&&this.state.element.data.subtype==='carousel'&& 
-                                        <span><p className="inputlabel">Image</p><input
-                                        name="image"
-                                        className="dropme"
-                            placeholder="Enter Image url"
-                                        value={x.image}
-                                        onChange={e => this.handleInputChange(e, i)}
-                                    />
-                                    {x.image===''? <div className="thumbnail"></div>:<div className="thumbnail"><img src={x.image} alt=""/></div>}   
-                                    </span> 
-                                    
-                                    }
-                                        <p className="inputlabel">Display Text</p>
-                                        <input
-                                        className="dropme"
-                                        name="text"
-                            placeholder="Enter Suggestion Text  Max 25 Char"
-                                        value={x.text}
-                                        maxLength="25"
-                                        autoComplete="off"
-                                        onChange={e => this.handleInputChange(e, i)}
-                                        />
-                                        <p className="inputlabel">Postback Text</p>
-                                        <input
-                                        className="dropme"
-                                        name="description"
-                            placeholder="Enter Postback Text  Max 25 Char"
-                                        value={x.description}
-                                        autoComplete="off"
-                                        maxLength="25"
-                                        onKeyDown={this.handleChangeSpace.bind(this)}
-                                        onChange={e => this.handleInputChange(e, i)}
-                                        />
-                                        <div className="btn-box">
-                                        {this.state.rowChip.length !== 1 && <button
-                                            className="mr10"
-                                            onClick={() => this.handleRemoveClick(i)}>Remove</button>}
-                                        {this.state.rowChip.length - 1 === i&&this.state.rowChip.length <= 8 && <button onClick={this.handleAddClick.bind(this)}>Add</button>}
-                                        </div>
-                                    </div>
-                                    );
-                                })}
                             
                             {/* <p className="inputlabel">Check properties</p>
                             {JSON.stringify(this.state.element)}
@@ -227,8 +182,6 @@ export class multimedia extends Component {
                             <input className="dropme" id='var_name' type="text" value={(this.state.element&&this.state.element.data&&(this.state.element.data.var_name||this.state.element.id))||''} onChange={this.handlerChange.bind(this)}/>
                             
                             <div className="checkus"><p></p></div>
-                            
-                                      {/* <div style={{ marginTop: 20 }}>{JSON.stringify(this.state)}</div> */}
 
                                 
                         </div>

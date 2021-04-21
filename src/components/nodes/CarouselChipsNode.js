@@ -5,9 +5,13 @@ import {DisplayNodeHeader, DisplayNodeBody} from './NodeDisplay';
 
 
 const CarouselChipsNode = ({ data }) => {
+  let errorClass='';
+  if((data.subtype==='multimedia'&&(data.mediaUrl!==""))||(data.subtype==='suggestionchip'&&(!data.rowChip||data.rowChip.length<0||(data.rowChip[0].text===''||data.rowChip[0].description==='')))){
+    errorClass='red';
+  }
   return (
     <>
-        <div className="blockelem noselect block botInput">
+        <div className={`blockelem noselect block botInput ${errorClass}`}>
             <Handle type="target" id="a" position="top" style={{ borderRadius: 0 }} />
             <DisplayNodeHeader data={data} displayColor={'blockyBlue'}></DisplayNodeHeader>
             <DisplayNodeBody data={data}></DisplayNodeBody>

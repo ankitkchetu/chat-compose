@@ -137,84 +137,22 @@ export class apicalling extends Component {
                             <div id="logsprop" className={this.state.clicked==='logsprop' ? 'navactive side' : "navdisabled side"} onClick={this._handleClick.bind(this)}>Logs</div>
                         </div>
                         <div className={this.state.clicked==='dataprop' ? 'proplist' : "proplist hidden"}>
-                            <p className="inputlabel">Message Body</p>
-                            <textarea className="dropmetextarea" id='description' value={(this.state.element&&this.state.element.data&&this.state.element.data.description)||''} onChange={this.handlerChange.bind(this)}></textarea>
-                            {(() => {
-                                if (this.state.element&&this.state.element.data&&this.state.element.data.subtype==='multimedia') {
-                                return (
-                                    <>
-                                    <p className="inputlabel">Media Type</p>
-                                    <select className="dropme" id="mediaType"
-                                        value={(this.state.element&&this.state.element.data&&this.state.element.data.mediaType)||'Image'} 
-                                        onChange={this.handleChange.bind(this)} 
-                                    >
-                                        <option value="Image">Image</option>
-                                        <option value="Audio">Audio</option>
-                                        <option value="Document">Document</option>
-                                        <option value="Video">Video</option>
-                                    </select>
-                                    <p className="inputlabel">Media Url</p>
-                                    <input
-                                        name="mediaUrl"
-                                        id="mediaUrl"
-                                        className="dropme"
-                                        placeholder="Enter Media url"
-                                        value={this.state.element.data.mediaUrl}
-                                        onChange={this.handleChange.bind(this)}
-                                        />
-                                    </>
-                                )
-                                } else {
-                                return (
-                                    <></>
-                                )
-                                }
-                            })()}
-                            {(this.state.element&&this.state.element.data)&&(this.state.element.data.subtype==='suggestionchip'||this.state.element.data.subtype==='carousel')&&this.state.rowChip.map((x, i) => {
-                                    return (
-                                    <div key={`card_`+i} className="box">
-                                        {this.state.element&&this.state.element.data&&this.state.element.data.subtype==='carousel'&& 
-                                        <span><p className="inputlabel">Image</p><input
-                                        name="image"
-                                        className="dropme"
-                            placeholder="Enter Image url"
-                                        value={x.image}
-                                        onChange={e => this.handleInputChange(e, i)}
-                                    />
-                                    {x.image===''? <div className="thumbnail"></div>:<div className="thumbnail"><img src={x.image} alt=""/></div>}   
-                                    </span> 
-                                    
-                                    }
-                                        <p className="inputlabel">Display Text</p>
-                                        <input
-                                        className="dropme"
-                                        name="text"
-                            placeholder="Enter Suggestion Text  Max 25 Char"
-                                        value={x.text}
-                                        maxLength="25"
-                                        autoComplete="off"
-                                        onChange={e => this.handleInputChange(e, i)}
-                                        />
-                                        <p className="inputlabel">Postback Text</p>
-                                        <input
-                                        className="dropme"
-                                        name="description"
-                            placeholder="Enter Postback Text  Max 25 Char"
-                                        value={x.description}
-                                        autoComplete="off"
-                                        maxLength="25"
-                                        onKeyDown={this.handleChangeSpace.bind(this)}
-                                        onChange={e => this.handleInputChange(e, i)}
-                                        />
-                                        <div className="btn-box">
-                                        {this.state.rowChip.length !== 1 && <button
-                                            className="mr10"
-                                            onClick={() => this.handleRemoveClick(i)}>Remove</button>}
-                                        {this.state.rowChip.length - 1 === i&&this.state.rowChip.length <= 8 && <button onClick={this.handleAddClick.bind(this)}>Add</button>}
-                                        </div>
-                                    </div>
-                                    );
-                                })}
+                        <p className="inputlabel">Type</p>
+                        <select className="dropme" id="api_type"
+                            value={(this.state.element&&this.state.element.data&&this.state.element.data.api_type)||'POST'} 
+                            onChange={this.handleChange.bind(this)} 
+                        >
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                        </select>
+                            <p className="inputlabel">URL</p>
+                            <input className="dropme" id='url' type="text" value={(this.state.element&&this.state.element.data&&(this.state.element.data.url))||''} onChange={this.handlerChange.bind(this)}/>
+                            <p className="inputlabel">Request Json</p>
+                            <input className="dropme" id='request_json' type="text" value={(this.state.element&&this.state.element.data&&(this.state.element.data.request_json))||''} onChange={this.handlerChange.bind(this)}/>
+                            <p className="inputlabel">API Response Value</p>
+                            <input className="dropme" id='response_json' type="text" value={(this.state.element&&this.state.element.data&&(this.state.element.data.response_json))||''} onChange={this.handlerChange.bind(this)}/>
+                            <p className="inputlabel">API Response Status Code</p>
+                            <input className="dropme" id='response_status' type="text" value={(this.state.element&&this.state.element.data&&(this.state.element.data.response_status))||''} onChange={this.handlerChange.bind(this)}/>
                             
                             {/* <p className="inputlabel">Check properties</p>
                             {JSON.stringify(this.state.element)}
@@ -227,9 +165,6 @@ export class apicalling extends Component {
                             <input className="dropme" id='var_name' type="text" value={(this.state.element&&this.state.element.data&&(this.state.element.data.var_name||this.state.element.id))||''} onChange={this.handlerChange.bind(this)}/>
                             
                             <div className="checkus"><p></p></div>
-                            
-                                      {/* <div style={{ marginTop: 20 }}>{JSON.stringify(this.state)}</div> */}
-
                                 
                         </div>
                         <div className={this.state.clicked==='logsprop' ? 'proplist' : "proplist hidden"}>

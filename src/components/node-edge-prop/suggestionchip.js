@@ -139,52 +139,9 @@ export class suggestionchip extends Component {
                         <div className={this.state.clicked==='dataprop' ? 'proplist' : "proplist hidden"}>
                             <p className="inputlabel">Message Body</p>
                             <textarea className="dropmetextarea" id='description' value={(this.state.element&&this.state.element.data&&this.state.element.data.description)||''} onChange={this.handlerChange.bind(this)}></textarea>
-                            {(() => {
-                                if (this.state.element&&this.state.element.data&&this.state.element.data.subtype==='multimedia') {
-                                return (
-                                    <>
-                                    <p className="inputlabel">Media Type</p>
-                                    <select className="dropme" id="mediaType"
-                                        value={(this.state.element&&this.state.element.data&&this.state.element.data.mediaType)||'Image'} 
-                                        onChange={this.handleChange.bind(this)} 
-                                    >
-                                        <option value="Image">Image</option>
-                                        <option value="Audio">Audio</option>
-                                        <option value="Document">Document</option>
-                                        <option value="Video">Video</option>
-                                    </select>
-                                    <p className="inputlabel">Media Url</p>
-                                    <input
-                                        name="mediaUrl"
-                                        id="mediaUrl"
-                                        className="dropme"
-                                        placeholder="Enter Media url"
-                                        value={this.state.element.data.mediaUrl}
-                                        onChange={this.handleChange.bind(this)}
-                                        />
-                                    </>
-                                )
-                                } else {
-                                return (
-                                    <></>
-                                )
-                                }
-                            })()}
-                            {(this.state.element&&this.state.element.data)&&(this.state.element.data.subtype==='suggestionchip'||this.state.element.data.subtype==='carousel')&&this.state.rowChip.map((x, i) => {
+                            {(this.state.element&&this.state.element.data)&&(this.state.element.data.subtype==='suggestionchip')&&this.state.rowChip.map((x, i) => {
                                     return (
                                     <div key={`card_`+i} className="box">
-                                        {this.state.element&&this.state.element.data&&this.state.element.data.subtype==='carousel'&& 
-                                        <span><p className="inputlabel">Image</p><input
-                                        name="image"
-                                        className="dropme"
-                            placeholder="Enter Image url"
-                                        value={x.image}
-                                        onChange={e => this.handleInputChange(e, i)}
-                                    />
-                                    {x.image===''? <div className="thumbnail"></div>:<div className="thumbnail"><img src={x.image} alt=""/></div>}   
-                                    </span> 
-                                    
-                                    }
                                         <p className="inputlabel">Display Text</p>
                                         <input
                                         className="dropme"
@@ -227,23 +184,11 @@ export class suggestionchip extends Component {
                             <input className="dropme" id='var_name' type="text" value={(this.state.element&&this.state.element.data&&(this.state.element.data.var_name||this.state.element.id))||''} onChange={this.handlerChange.bind(this)}/>
                             
                             <div className="checkus"><p></p></div>
-                            
-                                      {/* <div style={{ marginTop: 20 }}>{JSON.stringify(this.state)}</div> */}
-
-                                
+                             
                         </div>
                         <div className={this.state.clicked==='logsprop' ? 'proplist' : "proplist hidden"}>
                             <div>
-                            {/* <Editor
-                                height="490vh" // By default, it fully fits with its parent
-                                theme={this.state.theme}
-                                language={this.state.language}
-                                value={'Place code here'}
-                                name="editor"
-                                editorDidMount={this.handleEditorDidMount.bind(this)}
-                                onChange={e => this.handleInputChange(e, 'editor')}
-                                loading={"Loading..."}
-                            /> */}
+                            
                             </div>
                         </div>
                         <div id="divisionthing"></div>
