@@ -142,6 +142,18 @@ export class carousel extends Component {
                             {(this.state.element&&this.state.element.data)&&(this.state.element.data.subtype==='carousel')&&this.state.rowChip.map((x, i) => {
                                     return (
                                     <div key={`card_`+i} className="box">
+                                        {this.state.element&&this.state.element.data&&this.state.element.data.subtype==='carousel'&& 
+                                            <span><p className="inputlabel">Image</p><input
+                                            name="image"
+                                            className="dropme"
+                                placeholder="Enter Image url"
+                                            value={x.image}
+                                            onChange={e => this.handleInputChange(e, i)}
+                                        />
+                                        {x.image===''? <div className="thumbnail"></div>:<div className="thumbnail"><img src={x.image} alt=""/></div>}   
+                                        </span> 
+                                        
+                                        }
                                         <p className="inputlabel">Display Text</p>
                                         <input
                                         className="dropme"
