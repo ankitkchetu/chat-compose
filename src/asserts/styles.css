@@ -776,10 +776,8 @@ body, html {
   }
   .popup_inner {
     position: absolute;
-    left: 25%;
-    right: 25%;
+    left: 40%;
     top: 25%;
-    bottom: 25%;
     margin: auto;
     background: white;
   }

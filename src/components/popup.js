@@ -36,16 +36,26 @@ export class Popup extends React.Component {
       return (
         <div className='popup'>
           <div className='popup_inner'>
-          <Form>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Upload File</Form.Label>
-                    <Form.Control type="file" accept='.json' placeholder="Upload Your file"  onChange={this.handleFileChosen.bind(this)} />
-                    
-                </Form.Group>
-                <Button variant="primary" type="button" onClick={this.props.closePopup}>
-                    Close
-                </Button>
-                </Form>
+          
+                <div class="react-confirm-alert">
+                    <div class="react-confirm-alert-body">
+                        <h1>Import file</h1>
+                        <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label className = "inputlabel">Upload File</Form.Label>
+                            <Form.Control className = "dropme" type="file" accept='.json' placeholder="Upload Your file"  onChange={this.handleFileChosen.bind(this)} />
+                            
+                        </Form.Group>
+                        <div class="react-confirm-alert-button-group">
+                            <Button variant="primary" type="button" onClick={this.props.closePopup}>
+                                Close
+                            </Button>
+                        </div>
+                       
+                        </Form>
+                        
+                    </div>
+                </div>
           </div>
         </div>
       );
