@@ -275,7 +275,7 @@ const nodeTypes = NodeTypes;
 
         if(e.data.type==='node'){
           if(id<tempId[tempId.length-1]){
-            id = parseInt(tempId[tempId.length-1]);
+            id = parseInt(tempId[tempId.length-1])+1;
           }
           
         }else{
