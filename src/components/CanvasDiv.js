@@ -267,6 +267,25 @@ const nodeTypes = NodeTypes;
     }
     configUpdate(data1){
       this.setState({elements:data1});
+      id=1;
+      idedge=0;
+      data1.map((e, i) => {
+        console.log(e.data.type,e.id);
+        let tempId = e.id.split('_');
+
+        if(e.data.type==='node'){
+          if(id<tempId[tempId.length-1]){
+            id = parseInt(tempId[tempId.length-1]);
+          }
+          
+        }else{
+          if(idedge<tempId[tempId.length-1]){
+            idedge = parseInt(tempId[tempId.length-1]);
+          }
+          
+        }
+        return true;
+      });
     }
       
     render(){  
