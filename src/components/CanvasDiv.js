@@ -265,6 +265,9 @@ const nodeTypes = NodeTypes;
             console.log('debugRunn',this.state.nodeName,prevState.nodeName)
       }
     }
+    configUpdate(data1){
+      this.setState({elements:data1});
+    }
       
     render(){  
         // useEffect(() => {
@@ -288,7 +291,7 @@ const nodeTypes = NodeTypes;
         return (
          
             <ReactFlowProvider>
-               <Navigation publishClick={this.onSaveAndPublishClick.bind(this)}/>
+               <Navigation publishClick={this.onSaveAndPublishClick.bind(this)} configUpdate={this.configUpdate.bind(this)}/>
                <Propwrap element={this.state.element} updateNodeCb={this.updateEdgeText.bind(this)} />
               <div className="sectionLeft dndflow reactflow-wrapper nested" ref={this.state.reactFlowWrapper}>
                <ReactFlow 

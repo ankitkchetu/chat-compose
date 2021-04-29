@@ -128,6 +128,25 @@ body, html {
     cursor: pointer;
     opacity: .7;
 }
+#discard1 {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 14px;
+    color: rgb(49, 105, 89);
+    width: 95px;
+    height: 38px;
+    border: 1px solid rgb(102, 102, 226);
+    border-radius: 5px;
+    text-align: center;
+    line-height: 38px;
+    display: inline-block;
+    vertical-align: top;
+    transition: all .2s cubic-bezier(.05,.03,.35,1);
+}
+#discard1:hover {
+    cursor: pointer;
+    opacity: .7;
+}
 #buttonsright {
     float: right;
     margin-top: 15px;
@@ -744,3 +763,23 @@ body, html {
 .react-flow__controls{
     left:3% !important;
 }
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
+  }
+  .popup_inner {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 25%;
+    bottom: 25%;
+    margin: auto;
+    background: white;
+  }
