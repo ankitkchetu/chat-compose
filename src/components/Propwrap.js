@@ -7,6 +7,7 @@ export class Propwrap extends Component {
         this.state ={
             element:props.element,
             updateNodeCb:props.updateNodeCb,
+            nameArray:props.nameArray,
             clicked:'dataprop',
             rowChip:(props.element&&props.element.data.rowChip)||[{image:"",text:"",description:""}],
             theme:"light",
@@ -19,6 +20,7 @@ export class Propwrap extends Component {
         if(!this.state.element){
             this.setState({
                 element:nextProps.element,
+                nameArray:nextProps.nameArray,
                 updateNodeCb:nextProps.updateNodeCb,
                 clicked:'dataprop',
                 rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{image:"",text:"",description:""}]
@@ -69,7 +71,7 @@ export class Propwrap extends Component {
                 const DynamicComponent = lazy(() => import(`./node-edge-prop/${this.state.element.data.subtype}`));
                 return (
                     <Suspense fallback={<div>Loading...</div>}>
-                        <DynamicComponent element={this.state.element} updateNodeCb={this.updateText1} />
+                        <DynamicComponent element={this.state.element} nameArray={this.state.nameArray} updateNodeCb={this.updateText1} />
                     </Suspense>
                 )
                 // return (

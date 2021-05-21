@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 export class start extends Component {
     constructor(props) {
         super(props)
@@ -6,6 +8,7 @@ export class start extends Component {
             element:props.element,
             updateNodeCb:props.updateNodeCb,
             clicked:'dataprop',
+            nameArray:props.nameArray,
             rowChip:(props.element&&props.element.data.rowChip)||[{image:"",text:"",description:""}],
             theme:"light",
             language:"javascript",
@@ -19,6 +22,7 @@ export class start extends Component {
                 element:nextProps.element,
                 updateNodeCb:nextProps.updateNodeCb,
                 clicked:'dataprop',
+                nameArray:nextProps.nameArray,
                 rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{image:"",text:"",description:""}]
 
             });
@@ -33,6 +37,7 @@ export class start extends Component {
                 element:prevProps.element,
                 updateNodeCb:prevProps.updateNodeCb,
                 clicked:'dataprop',
+                nameArray:prevProps.nameArray,
                 rowChip:(prevProps.element&&prevProps.element.data.rowChip)||[{image:"",text:"",description:""}]
 
             });
@@ -74,14 +79,21 @@ export class start extends Component {
     }
         
     handlerChange(evt){
-        
+        document.getElementById('propwrap').classList.add("editMark");
         if(evt.target.id==='id_label'){
         this.setState({element:{...this.state.element,label:evt.target.value,data:{...this.state.element.data,label:evt.target.value}}});
         }else{
-            let a = {};
-            a[evt.target.id]=evt.target.value;
             
-            var obj = Object.assign({}, this.state.element.data, a);
+                let a = {};
+                if(evt.target.id==='var_name'){
+                a[evt.target.id]=evt.target.value.toLowerCase();
+                }else{
+                    a[evt.target.id]=evt.target.value;  
+                }
+                
+                var obj = Object.assign({}, this.state.element.data, a);
+
+            
             
             this.setState({element:{...this.state.element,data:{...obj}}}); 
         }
@@ -92,15 +104,37 @@ export class start extends Component {
             
            console.log('called');
             console.log('inside',this.state.element);
-            let elemetOld = this.props.element;
-            let newLabel = this.state.element;
-            this.setState({element:newLabel});
+            if(this.state.nameArray.name.has(this.state.element.data.var_name)&&this.state.nameArray.name.get(this.state.element.data.var_name)!==this.state.element.id){
+                confirmAlert({
+                    title: 'Alert',
+                    message: "You Can't use same name. As this Name Already used in "+this.state.nameArray.name.get(this.state.element.data.var_name),
+                    buttons: [
+                      {
+                        label: 'Ok'
+                      }
+                    ]
+                  });
+                return true;
+            }else{
+                let elemetOld = this.props.element;
+                console.log('ankit',elemetOld.id);
+                let newLabel = this.state.element;
+                let eleName = this.state.nameArray.id.get(this.state.element.id);
+                this.state.nameArray.id.delete(this.state.element.id);
+                this.state.nameArray.name.delete(eleName);
+                this.state.nameArray.name.set(this.state.element.data.var_name,this.state.element.id);
+                this.state.nameArray.id.set(this.state.element.id,this.state.element.data.var_name);
+                
+                this.setState({element:newLabel});
+                
+                this.state.updateNodeCb(elemetOld,newLabel,(elemetOld.data.type==='node'?0:1));
+            }
             
-            this.state.updateNodeCb(elemetOld,newLabel,(elemetOld.data.type==='node'?0:1));
             
         }else{
             console.log('empty',this.props);
         }
+        document.getElementById('propwrap').classList.remove("editMark");
         this.setState({element:null});
         
 
@@ -148,7 +182,9 @@ export class start extends Component {
                         </div>
                         <div className={this.state.clicked==='alertprop' ? 'proplist' : "proplist hidden"}>
                             <p className="inputlabel">Name</p>
-                            <input className="dropme" id='var_name' type="text" value={(this.state.element&&this.state.element.data&&(this.state.element.data.var_name||this.state.element.id))||''} onChange={this.handlerChange.bind(this)}/>
+                           
+                            {this.state.nameArray&&this.state.nameArray.name.size}
+                            <input className="dropme" id='var_name' type="text" value={(this.state.element&&this.state.element.data&&this.state.element.data.var_name)} onChange={this.handlerChange.bind(this)}/>
                             
                             <div className="checkus"><p></p></div>
                                 

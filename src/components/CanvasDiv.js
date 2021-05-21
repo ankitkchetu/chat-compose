@@ -32,7 +32,8 @@ const nodeTypes = NodeTypes;
     }  
     return `edge_${idedge}`
     } ;
-  
+  let NameArray = {"name":new Map(),"id":new Map()};  
+
   
     export class ContentDiv extends Component {
       constructor(props) {
@@ -42,6 +43,7 @@ const nodeTypes = NodeTypes;
           reactFlowInstance:null,
           state:{element:null},
           elements:data,
+          NameArray:NameArray,
           reactFlowWrapper:React.createRef()
 
         };
@@ -201,8 +203,7 @@ const nodeTypes = NodeTypes;
       this.setState({elements:this.state.elements.concat(newNode)});
       };
       
-
-    onElementClick(event, element){
+    clickHandleCode(event, element){
       if(document.getElementsByClassName('selectedblock').length){
         let allElements = Array.from(document.getElementsByClassName('selectedblock'))
         for (let elementL of allElements) {
@@ -213,6 +214,30 @@ const nodeTypes = NodeTypes;
       
         console.log('called',element,event.target.parentElement.classList.add("selectedblock"));
         this.setState({element:element}); 
+    }  
+    onElementClick(event, element){
+      if(document.getElementsByClassName('editMark').length>0){
+        confirmAlert({
+          title: 'Confirm Message',
+          message: 'Proceed Without Saving?.',
+          buttons: [
+            {
+              label: 'Yes',
+              onClick:()=>{
+                this.clickHandleCode(event, element);
+              }
+            },
+            {
+              label: 'No',
+              onClick: () => {
+                return false
+              }
+            }
+          ]
+        });
+      }else{
+        this.clickHandleCode(event, element);
+      }
     }   
 
     onSaveAndPublishClick(event){
@@ -311,7 +336,7 @@ const nodeTypes = NodeTypes;
          
             <ReactFlowProvider>
                <Navigation publishClick={this.onSaveAndPublishClick.bind(this)} configUpdate={this.configUpdate.bind(this)}/>
-               <Propwrap element={this.state.element} updateNodeCb={this.updateEdgeText.bind(this)} />
+               <Propwrap element={this.state.element} nameArray={this.state.NameArray} updateNodeCb={this.updateEdgeText.bind(this)} />
               <div className="sectionLeft dndflow reactflow-wrapper nested" ref={this.state.reactFlowWrapper}>
                <ReactFlow 
                 elements={this.state.elements}

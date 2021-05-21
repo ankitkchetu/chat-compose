@@ -7,7 +7,7 @@ import {DisplayNodeHeader, DisplayNodeBody} from './NodeDisplay';
 const Userinput = ({ data }) => {
   return (
     <>
-        <div className="blockelem noselect block botInput">
+        <div className="blockelem noselect block botInput ">
           <Handle type="target" id="a" position="top" style={{ borderRadius: 0 }} />
             <DisplayNodeHeader data={data} displayColor={'blockyBlue'}></DisplayNodeHeader>
             <DisplayNodeBody data={data}></DisplayNodeBody>
