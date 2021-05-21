@@ -80,12 +80,33 @@ const nodeTypes = NodeTypes;
        * All other edges are just flow. They dont do any operation other than direct transition.
        */
       let outputsAreIntents = false;
+      let  source,destination;
       for (let i = 0; i < this.state.elements.length; i++) {
         let element = this.state.elements[i];
+        // console.log('element.id',element.id,element.id === params.target,element.id === params.source);
         if (element.id === params.source && element.type === 'selectorUserInput') {
+          
           console.log("Source node is user input node hence outputs are intents", element);
           outputsAreIntents = true;
         }
+        if(element.id === params.target){
+          destination = element;
+        }
+        if (element.id === params.source){
+          source = element;
+        }
+      }
+      let Typeedge = {type:'smoothstep'};
+      console.log('destinationcalled');
+      if(destination&&source){
+        if(destination.position.y<source.position.y&&destination.position.x>source.position.x){
+          Typeedge = {type: 'step',
+          style: { stroke: '#f6ab6c' },
+          animated: true};
+        }
+        console.log('destination',destination,"source",source);
+      }else{
+        console.log('destinationcalledothing');
       }
 
       if (outputsAreIntents) {
@@ -93,13 +114,13 @@ const nodeTypes = NodeTypes;
         let edgeLabel = 'Intent Name ' + incId;
         let edgeId = 'intent_' + incId;
 
-        this.setState({elements:addEdge({ ...params, type: 'smoothstep', animated: false,label: edgeLabel, data:{label: edgeLabel,type:"edge"}, id: edgeId, arrowHeadType: 'arrow' }, this.state.elements)});
+        this.setState({elements:addEdge({ ...params, animated: false,label: edgeLabel, data:{label: edgeLabel,type:"edge"}, id: edgeId, arrowHeadType: 'arrow',...Typeedge }, this.state.elements)});
       } else {
         const incId =  '' + getIdEdge();
         let edgeLabel = '';
         let edgeId = 'flow_' + incId;
 
-        this.setState({elements:addEdge({ ...params, type: 'smoothstep', animated: false,label: edgeLabel,data:{label: edgeLabel, type:"edge"}, id: edgeId, arrowHeadType: 'arrow' }, this.state.elements)});
+        this.setState({elements:addEdge({ ...params, animated: false,label: edgeLabel,data:{label: edgeLabel, type:"edge"}, id: edgeId, arrowHeadType: 'arrow',...Typeedge }, this.state.elements)});
       }
     };
 
@@ -212,7 +233,20 @@ const nodeTypes = NodeTypes;
         // document.getElementsByClassName('selectedblock').classList.remove("selectedblock");
       }
       
-        console.log('called',element,event.target.parentElement.classList.add("selectedblock"));
+        console.log('called',event.target.className);
+        if(event.target.className==='blockelem noselect block botInput'){
+          event.target.parentElement.getElementsByClassName('blockelem')[0].classList.add("selectedblock");
+        }else if(event.target.className==='blockyinfo'||event.target.className==='blockyBlue'){
+          event.target.parentElement.parentElement.getElementsByClassName('blockelem')[0].classList.add("selectedblock");
+        }else if(event.target.className=='blockyname'){
+          event.target.parentElement.parentElement.parentElement.classList.add("selectedblock");
+          // event.target.parentElement.parentElement.parentElement.getElementsByClassName('blockelem')[0].classList.add("selectedblock");
+        }else if(event.target.className=='blockyleft'){
+          event.target.parentElement.parentElement.parentElement.parentElement.classList.add("selectedblock");
+          // event.target.parentElement.parentElement.parentElement.getElementsByClassName('blockelem')[0].classList.add("selectedblock");
+        }else{
+          console.log('divdebug',event.target.parentElement.parentElement.parentElement.classList.add("selectedblock"));//.getElementsByClassName('blockelem')[0].classList.add("selectedblock")
+        }
         this.setState({element:element}); 
     }  
     onElementClick(event, element){
