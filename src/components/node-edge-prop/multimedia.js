@@ -79,7 +79,7 @@ export class multimedia extends Component {
     }
         
     handlerChange(evt){
-        
+        document.getElementById('propwrap').classList.add("editMark");
         if(evt.target.id==='id_label'){
         this.setState({element:{...this.state.element,label:evt.target.value,data:{...this.state.element.data,label:evt.target.value}}});
         }else{
@@ -133,7 +133,7 @@ export class multimedia extends Component {
         }
         this.setState({element:null});
         
-
+        document.getElementById('propwrap').classList.remove("editMark");
         return true
     }
     handleChangeSpace(e) {
