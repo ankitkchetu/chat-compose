@@ -234,19 +234,7 @@ const nodeTypes = NodeTypes;
       }
       
         console.log('called',event.target.className);
-        if(event.target.className==='blockelem noselect block botInput'){
-          event.target.parentElement.getElementsByClassName('blockelem')[0].classList.add("selectedblock");
-        }else if(event.target.className==='blockyinfo'||event.target.className==='blockyBlue'){
-          event.target.parentElement.parentElement.getElementsByClassName('blockelem')[0].classList.add("selectedblock");
-        }else if(event.target.className=='blockyname'){
-          event.target.parentElement.parentElement.parentElement.classList.add("selectedblock");
-          // event.target.parentElement.parentElement.parentElement.getElementsByClassName('blockelem')[0].classList.add("selectedblock");
-        }else if(event.target.className=='blockyleft'){
-          event.target.parentElement.parentElement.parentElement.parentElement.classList.add("selectedblock");
-          // event.target.parentElement.parentElement.parentElement.getElementsByClassName('blockelem')[0].classList.add("selectedblock");
-        }else{
-          console.log('divdebug',event.target.parentElement.parentElement.parentElement.classList.add("selectedblock"));//.getElementsByClassName('blockelem')[0].classList.add("selectedblock")
-        }
+        event.target.closest(".blockelem").classList.add("selectedblock");
         this.setState({element:element}); 
     }  
     onElementClick(event, element){
