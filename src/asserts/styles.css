@@ -151,6 +151,7 @@ body, html {
     float: right;
     margin-top: 15px;
 }
+
 #leftcard {
     width: auto;
     background-color: #FFF;
@@ -781,21 +782,41 @@ body, html {
     margin: auto;
     background: white;
   }
-  #diamond {
-    width: 0;
-    height: 0;
-    border: 50px solid transparent;
-    border-bottom-color: red;
-    position: relative;
-    top: -50px;
-  }
-  #diamond:after {
-    content: '';
-    position: absolute;
-    left: -50px;
-    top: 50px;
-    width: 0;
-    height: 0;
-    border: 50px solid transparent;
-    border-top-color: red;
-  }
+  .diamond {
+    width: 120px;
+    height: 120px;
+    /* background: #1eff00; */
+/* Rotate */
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+/* Rotate Origin */
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    margin: 60px 0 10px 310px;
+}
+.diamond div.blockyBlue,.diamond div.blockydiv,.diamond div.blockyinfo {
+  font-size:6px;
+/* Rotate */
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+/* Rotate Origin */
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+.blockyleft img.imageright {
+    float: right;
+    margin-top: 15px;
+}

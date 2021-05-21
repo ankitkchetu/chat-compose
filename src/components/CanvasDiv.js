@@ -234,7 +234,9 @@ const nodeTypes = NodeTypes;
       }
       
         console.log('called',event.target.className);
+        if(event.target.closest(".blockelem")){
         event.target.closest(".blockelem").classList.add("selectedblock");
+        }
         this.setState({element:element}); 
     }  
     onElementClick(event, element){
@@ -317,8 +319,10 @@ const nodeTypes = NodeTypes;
       id=1;
       idedge=0;
       data1.map((e, i) => {
-        console.log(e.data.type,e.id);
+        console.log(e.data.var_name,e.id);
         let tempId = e.id.split('_');
+        this.state.NameArray.name.set(e.id,e.data.var_name);
+        this.state.NameArray.id.set(e.data.var_name,e.id);
 
         if(e.data.type==='node'){
           if(id<tempId[tempId.length-1]){
@@ -333,6 +337,7 @@ const nodeTypes = NodeTypes;
         }
         return true;
       });
+      console.log(this.state.NameArray.id);
     }
       
     render(){  
