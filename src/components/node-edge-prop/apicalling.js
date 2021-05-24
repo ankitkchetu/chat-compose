@@ -193,7 +193,7 @@ export class apicalling extends Component {
                         </div>
                         <div className={this.state.clicked==='alertprop' ? 'proplist' : "proplist hidden"}>
                             <p className="inputlabel">Name</p>
-                            {this.state.nameArray&&this.state.nameArray.name.size}
+                            {/* {this.state.nameArray&&this.state.nameArray.name.size} */}
                             <input className="dropme" id='var_name' type="text" value={(this.state.element&&this.state.element.data&&this.state.element.data.var_name)} onChange={this.handlerChange.bind(this)}/>
                             
                             
