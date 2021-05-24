@@ -62,7 +62,7 @@ export class userinput extends Component {
         }else{
             let a = {};
             if(evt.target.id==='var_name'){
-                a[evt.target.id]=evt.target.value.toLowerCase();
+                a[evt.target.id]=evt.target.value.toLowerCase().replace(/[^A-Za-z]+/g, '');
             }else{
                 a[evt.target.id]=evt.target.value;  
             }

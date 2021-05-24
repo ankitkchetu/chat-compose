@@ -158,6 +158,11 @@ const nodeTypes = NodeTypes;
               label: 'Yes',
               onClick: () => {
                 this.setState({elements:ls.get("readLater")});
+                ls.get("readLater").map((e, i) => {
+                  this.state.NameArray.name.set(e.id,e.data.var_name);
+                  this.state.NameArray.id.set(e.data.var_name,e.id);
+                  return true;
+                });
                 id=ls.get("node_id");
                 idedge=ls.get("edge_id");
                 console.log(id,idedge);

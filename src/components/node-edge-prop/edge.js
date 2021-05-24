@@ -85,7 +85,7 @@ export class EdgeProp extends Component {
         }else{
             let a = {};
             if(evt.target.id==='var_name'){
-                a[evt.target.id]=evt.target.value.toLowerCase();
+                a[evt.target.id]=evt.target.value.toLowerCase().replace(/[^A-Za-z]+/g, '');
             }else{
                 a[evt.target.id]=evt.target.value;  
             }
@@ -101,31 +101,31 @@ export class EdgeProp extends Component {
             
            console.log('called');
             console.log('inside',this.state.element);
-            if(this.state.nameArray.name.has(this.state.element.data.var_name)&&this.state.nameArray.name.get(this.state.element.data.var_name)!==this.state.element.id){
-                confirmAlert({
-                    title: 'Alert',
-                    message: "You Can't use same name. As this Name Already used in "+this.state.nameArray.name.get(this.state.element.data.var_name),
-                    buttons: [
-                      {
-                        label: 'Ok'
-                      }
-                    ]
-                  });
-                return true;
-            }else{
+            // if(this.state.nameArray.name.has(this.state.element.data.var_name)&&this.state.nameArray.name.get(this.state.element.data.var_name)!==this.state.element.id){
+            //     confirmAlert({
+            //         title: 'Alert',
+            //         message: "You Can't use same name. As this Name Already used in "+this.state.nameArray.name.get(this.state.element.data.var_name),
+            //         buttons: [
+            //           {
+            //             label: 'Ok'
+            //           }
+            //         ]
+            //       });
+            //     return true;
+            // }else{
                 let elemetOld = this.props.element;
                 console.log('ankit',elemetOld.id);
                 let newLabel = this.state.element;
-                let eleName = this.state.nameArray.id.get(this.state.element.id);
-                this.state.nameArray.id.delete(this.state.element.id);
-                this.state.nameArray.name.delete(eleName);
-                this.state.nameArray.name.set(this.state.element.data.var_name,this.state.element.id);
-                this.state.nameArray.id.set(this.state.element.id,this.state.element.data.var_name);
+                // let eleName = this.state.nameArray.id.get(this.state.element.id);
+                // this.state.nameArray.id.delete(this.state.element.id);
+                // this.state.nameArray.name.delete(eleName);
+                // this.state.nameArray.name.set(this.state.element.data.var_name,this.state.element.id);
+                // this.state.nameArray.id.set(this.state.element.id,this.state.element.data.var_name);
                 
                 this.setState({element:newLabel});
                 
                 this.state.updateNodeCb(elemetOld,newLabel,(elemetOld.data.type==='node'?0:1));
-            }
+            // }
             
             
         }else{
