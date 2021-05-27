@@ -96,13 +96,13 @@ const nodeTypes = NodeTypes;
           source = element;
         }
       }
-      let Typeedge = {type:'smoothstep'};
+      let Typeedge = {type:'smoothstep',arrowHeadType: 'arrowclosed'};
       console.log('destinationcalled');
       if(destination&&source){
         if(destination.position.y<source.position.y&&destination.position.x>source.position.x){
           Typeedge = {type: 'step',
           style: { stroke: '#f6ab6c' },
-          animated: true};
+          animated: true,arrowHeadType: 'arrowclosed'};
         }
         console.log('destination',destination,"source",source);
       }else{
@@ -172,6 +172,8 @@ const nodeTypes = NodeTypes;
             {
               label: 'No',
               onClick: () => {
+                id=1;
+                idedge=0;
                 this.callIntervalFunc();
               }
             }
@@ -187,7 +189,7 @@ const nodeTypes = NodeTypes;
         ls.set('readLater', this.state.elements);
         ls.set('node_id', id);
         ls.set('edge_id', idedge);
-        // console.log(123,this.state.reactFlowInstance.toObject().elements)
+        console.log(123,id,idedge);
         // this.setState({ seconds: this.state.seconds + 1 });
       }, 5000);
     }
@@ -324,13 +326,13 @@ const nodeTypes = NodeTypes;
       id=1;
       idedge=0;
       data1.map((e, i) => {
-        console.log(e.data.var_name,e.id);
+        console.log(e.data.type,e.id);
         let tempId = e.id.split('_');
         this.state.NameArray.name.set(e.id,e.data.var_name);
         this.state.NameArray.id.set(e.data.var_name,e.id);
 
         if(e.data.type==='node'){
-          if(id<tempId[tempId.length-1]){
+          if(id<=tempId[tempId.length-1]){
             id = parseInt(tempId[tempId.length-1])+1;
           }
           
@@ -342,7 +344,7 @@ const nodeTypes = NodeTypes;
         }
         return true;
       });
-      console.log(this.state.NameArray.id);
+      console.log(id,idedge);
     }
       
     render(){  
