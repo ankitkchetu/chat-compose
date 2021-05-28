@@ -32,7 +32,7 @@ const nodeTypes = NodeTypes;
     }  
     return `edge_${idedge}`
     } ;
-  let NameArray = {"name":new Map(),"id":new Map()};  
+  let NameArray = {"name":new Map([[data[0].data.var_name,data[0].id]]),"id":new Map([[data[0].id,data[0].data.var_name]])};  
 
   
     export class ContentDiv extends Component {
@@ -158,11 +158,14 @@ const nodeTypes = NodeTypes;
               label: 'Yes',
               onClick: () => {
                 this.setState({elements:ls.get("readLater")});
+                let nameMap = new Map();
+                let idMap = new Map();
                 ls.get("readLater").map((e, i) => {
-                  this.state.NameArray.name.set(e.id,e.data.var_name);
-                  this.state.NameArray.id.set(e.data.var_name,e.id);
+                  idMap.set(e.id,e.data.var_name);
+                  nameMap.set(e.data.var_name,e.id);
                   return true;
                 });
+                this.setState({NameArray:{"name":nameMap,"id":idMap}});
                 id=ls.get("node_id");
                 idedge=ls.get("edge_id");
                 console.log(id,idedge);
@@ -325,12 +328,13 @@ const nodeTypes = NodeTypes;
       this.setState({elements:data1});
       id=1;
       idedge=0;
+      let nameMap = new Map();
+      let idMap = new Map();
       data1.map((e, i) => {
         console.log(e.data.type,e.id);
         let tempId = e.id.split('_');
-        this.state.NameArray.name.set(e.id,e.data.var_name);
-        this.state.NameArray.id.set(e.data.var_name,e.id);
-
+        idMap.set(e.id,e.data.var_name);
+        nameMap.set(e.data.var_name,e.id);
         if(e.data.type==='node'){
           if(id<=tempId[tempId.length-1]){
             id = parseInt(tempId[tempId.length-1])+1;
@@ -344,6 +348,7 @@ const nodeTypes = NodeTypes;
         }
         return true;
       });
+      this.setState({NameArray:{"name":nameMap,"id":idMap}});
       console.log(id,idedge);
     }
       
