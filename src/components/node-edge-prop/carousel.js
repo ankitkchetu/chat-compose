@@ -167,8 +167,8 @@ export class carousel extends Component {
                             <div id="logsprop" className={this.state.clicked==='logsprop' ? 'navactive side' : "navdisabled side"} onClick={this._handleClick.bind(this)}>Logs</div>
                         </div>
                         <div className={this.state.clicked==='dataprop' ? 'proplist' : "proplist hidden"}>
-                            <p className="inputlabel">Message Body</p>
-                            <textarea className="dropmetextarea" id='description' value={(this.state.element&&this.state.element.data&&this.state.element.data.description)||''} onChange={this.handlerChange.bind(this)}></textarea>
+                            {/* <p className="inputlabel">Message Body</p> */}
+                            {/* <textarea className="dropmetextarea" id='description' value={(this.state.element&&this.state.element.data&&this.state.element.data.description)||''} onChange={this.handlerChange.bind(this)}></textarea> */}
                             {(this.state.element&&this.state.element.data)&&(this.state.element.data.subtype==='carousel')&&this.state.rowChip.map((x, i) => {
                                     return (
                                     <div key={`card_`+i} className="box">

@@ -10,7 +10,7 @@ const StartNode = ({ data }) => {
         <div className="blockelem noselect block botInput">
             <DisplayNodeHeader data={data} displayColor={'blockyBlue'}></DisplayNodeHeader>
             <DisplayNodeBody data={data}></DisplayNodeBody>
-            <Handle type="source" position="bottom" style={{ borderRadius: 0 }} />
+            <Handle type="source" position="bottom" style={{ borderRadius: 0,background:'green' }} />
         </div>
     </>
   );

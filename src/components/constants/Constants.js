@@ -146,7 +146,8 @@ export const leftPalateConstants = {
          "subtype":"start",
          "type":"node",
          "image":"eye.svg",
-         "class":"blockyGrey"
+         "class":"blockyGrey",
+         "var_name":"start"
       }
    }
 ];

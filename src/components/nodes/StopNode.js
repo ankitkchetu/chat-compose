@@ -7,7 +7,7 @@ const StopNode = ({ data }) => {
   return (
     <>
         <div className="blockelem noselect block botInput">
-            <Handle type="target" position="top" style={{ borderRadius: 0 }} />
+            <Handle type="target" position="top" style={{ borderRadius: 0,background:'red' }} />
             <DisplayNodeHeader data={data} displayColor={'blockyRed'}></DisplayNodeHeader>
             <DisplayNodeBody data={data}></DisplayNodeBody>
         </div>
