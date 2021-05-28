@@ -9,7 +9,7 @@ export class suggestionchip extends Component {
             updateNodeCb:props.updateNodeCb,
             clicked:'dataprop',
             nameArray:props.nameArray,
-            rowChip:(props.element&&props.element.data.rowChip)||[{image:"",text:"",description:""}],
+            rowChip:(props.element&&props.element.data.rowChip)||[{text:"",description:""}],
             theme:"light",
             language:"javascript",
             isEditorReady:false
@@ -23,7 +23,7 @@ export class suggestionchip extends Component {
                 updateNodeCb:nextProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:nextProps.nameArray,
-                rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{image:"",text:"",description:""}]
+                rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{text:"",description:""}]
 
             });
 
@@ -38,7 +38,7 @@ export class suggestionchip extends Component {
                 updateNodeCb:prevProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:prevProps.nameArray,
-                rowChip:(prevProps.element&&prevProps.element.data.rowChip)||[{image:"",text:"",description:""}]
+                rowChip:(prevProps.element&&prevProps.element.data.rowChip)||[{text:"",description:""}]
 
             });
         }
@@ -66,7 +66,7 @@ export class suggestionchip extends Component {
      
       // handle click event of the Add button
     handleAddClick() {
-        this.setState({rowChip:[...this.state.rowChip, { image: "", text: "",description:"" }]});
+        this.setState({rowChip:[...this.state.rowChip, {  text: "",description:"" }]});
       };
 
     _handleClick(evt){

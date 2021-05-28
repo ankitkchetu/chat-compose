@@ -9,7 +9,7 @@ export class carousel extends Component {
             updateNodeCb:props.updateNodeCb,
             clicked:'dataprop',
             nameArray:props.nameArray,
-            rowChip:(props.element&&props.element.data.rowChip)||[{image:"",text:"",description:""}],
+            rowChip:(props.element&&props.element.data.rowChip)||[{image:"",title: "",description:"",postback_text:""}],
             theme:"light",
             language:"javascript",
             isEditorReady:false
@@ -23,7 +23,7 @@ export class carousel extends Component {
                 updateNodeCb:nextProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:nextProps.nameArray,
-                rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{image:"",text:"",description:""}]
+                rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{image:"",title: "",description:"",postback_text:""}]
 
             });
 
@@ -38,7 +38,7 @@ export class carousel extends Component {
                 updateNodeCb:prevProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:prevProps.nameArray,
-                rowChip:(prevProps.element&&prevProps.element.data.rowChip)||[{image:"",text:"",description:""}]
+                rowChip:(prevProps.element&&prevProps.element.data.rowChip)||[{image:"",title: "",description:"",postback_text:""}]
 
             });
         }
@@ -66,7 +66,7 @@ export class carousel extends Component {
      
       // handle click event of the Add button
     handleAddClick() {
-        this.setState({rowChip:[...this.state.rowChip, { image: "", text: "",description:"" }]});
+        this.setState({rowChip:[...this.state.rowChip, { image: "", title: "",description:"",postback_text:"" }]});
       };
 
     _handleClick(evt){
@@ -184,22 +184,33 @@ export class carousel extends Component {
                                         </span> 
                                         
                                         }
-                                        <p className="inputlabel">Display Text</p>
+                                        <p className="inputlabel">Display Title</p>
                                         <input
                                         className="dropme"
-                                        name="text"
-                            placeholder="Enter Suggestion Text  Max 25 Char"
-                                        value={x.text}
+                                        name="title"
+                            placeholder="Enter Title Text  Max 25 Char"
+                                        value={x.title}
                                         maxLength="25"
                                         autoComplete="off"
+                                        onChange={e => this.handleInputChange(e, i)}
+                                        />
+                                        <p className="inputlabel">Postback Description</p>
+                                        <input
+                                        className="dropme"
+                                        name="description"
+                            placeholder="Enter description Text  Max 25 Char"
+                                        value={x.description}
+                                        autoComplete="off"
+                                        maxLength="25"
+                                        onKeyDown={this.handleChangeSpace.bind(this)}
                                         onChange={e => this.handleInputChange(e, i)}
                                         />
                                         <p className="inputlabel">Postback Text</p>
                                         <input
                                         className="dropme"
-                                        name="description"
+                                        name="postback_text"
                             placeholder="Enter Postback Text  Max 25 Char"
-                                        value={x.description}
+                                        value={x.postback_text}
                                         autoComplete="off"
                                         maxLength="25"
                                         onKeyDown={this.handleChangeSpace.bind(this)}
