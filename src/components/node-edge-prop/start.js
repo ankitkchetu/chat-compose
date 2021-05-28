@@ -9,7 +9,7 @@ export class start extends Component {
             updateNodeCb:props.updateNodeCb,
             clicked:'dataprop',
             nameArray:props.nameArray,
-            rowChip:(props.element&&props.element.data.rowChip)||[{image:"",text:"",description:""}],
+            bot_slots:(props.element&&props.element.data.bot_slots)||[{ slot_name: "",slot_value:"" }],
             theme:"light",
             language:"javascript",
             isEditorReady:false
@@ -23,7 +23,7 @@ export class start extends Component {
                 updateNodeCb:nextProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:nextProps.nameArray,
-                rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{image:"",text:"",description:""}]
+                bot_slots:(nextProps.element&&nextProps.element.data.bot_slots)||[{ slot_name: "",slot_value:"" }]
 
             });
 
@@ -38,7 +38,7 @@ export class start extends Component {
                 updateNodeCb:prevProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:prevProps.nameArray,
-                rowChip:(prevProps.element&&prevProps.element.data.rowChip)||[{image:"",text:"",description:""}]
+                bot_slots:(prevProps.element&&prevProps.element.data.bot_slots)||[{ slot_name: "",slot_value:"" }]
 
             });
         }
@@ -47,26 +47,24 @@ export class start extends Component {
     }
     handleInputChange (e, index){
         const { name, value } = e.target;
-        const list = [...this.state.rowChip];
+        const list = [...this.state.bot_slots];
         list[index][name] = value;
-        this.setState({rowChip:list});
-        if(this.state.element.data.subtype==='suggestionchip'||this.state.element.data.subtype==='carousel'){
-            let a = {rowChip:list};
-            let obj = Object.assign({}, this.state.element.data, a);
-            this.setState({element:{...this.state.element,data:{...obj}}}); 
-        }
+        this.setState({bot_slots:list});
+        let a = {bot_slots:list};
+        let obj = Object.assign({}, this.state.element.data, a);
+        this.setState({element:{...this.state.element,data:{...obj}}}); 
       };
      
       // handle click event of the Remove button
     handleRemoveClick(index){
-        const list = [...this.state.rowChip];
+        const list = [...this.state.bot_slots];
         list.splice(index, 1);
-        this.setState({rowChip:list});
+        this.setState({bot_slots:list});
       };
      
       // handle click event of the Add button
     handleAddClick() {
-        this.setState({rowChip:[...this.state.rowChip, { image: "", text: "",description:"" }]});
+        this.setState({bot_slots:[...this.state.bot_slots, { slot_name: "",slot_value:"" }]});
       };
 
     _handleClick(evt){
@@ -171,9 +169,41 @@ export class start extends Component {
                             <div id="logsprop" className={this.state.clicked==='logsprop' ? 'navactive side' : "navdisabled side"} onClick={this._handleClick.bind(this)}>Logs</div>
                         </div>
                         <div className={this.state.clicked==='dataprop' ? 'proplist' : "proplist hidden"}>
-                            <p className="inputlabel">Message Body</p>
-                            <textarea className="dropmetextarea" id='description' value={(this.state.element&&this.state.element.data&&this.state.element.data.description)||''} onChange={this.handlerChange.bind(this)}></textarea>
-                            
+                            <p className="inputlabel">Bot Slots</p>
+                            {/* <textarea className="dropmetextarea" id='description' value={(this.state.element&&this.state.element.data&&this.state.element.data.description)||''} onChange={this.handlerChange.bind(this)}></textarea> */}
+                            {(this.state.element&&this.state.element.data)&&this.state.bot_slots.map((x, i) => {
+                                    return (
+                                    <div key={`card_`+i} className="box">
+                                        <p className="inputlabel">Slot Name</p>
+                                        <input
+                                        className="dropme"
+                                        name="slot_name"
+                            placeholder="Enter slot name"
+                                        value={x.slot_name}
+                                        maxLength="25"
+                                        autoComplete="off"
+                                        onChange={e => this.handleInputChange(e, i)}
+                                        />
+                                        <p className="inputlabel">Slot Value</p>
+                                        <input
+                                        className="dropme"
+                                        name="slot_value"
+                            placeholder="Enter slot value"
+                                        value={x.slot_value}
+                                        autoComplete="off"
+                                        maxLength="25"
+                                        onKeyDown={this.handleChangeSpace.bind(this)}
+                                        onChange={e => this.handleInputChange(e, i)}
+                                        />
+                                        <div className="btn-box">
+                                        {this.state.bot_slots.length !== 1 && <button
+                                            className="mr10"
+                                            onClick={() => this.handleRemoveClick(i)}>Remove</button>}
+                                        {this.state.bot_slots.length - 1 === i&&this.state.bot_slots.length <= 8 && <button onClick={this.handleAddClick.bind(this)}>Add</button>}
+                                        </div>
+                                    </div>
+                                    );
+                                })}
                             {/* <p className="inputlabel">Check properties</p>
                             {JSON.stringify(this.state.element)}
                             <div className="dropme">All<img src="assets/dropdown.svg" alt="all"/></div>
