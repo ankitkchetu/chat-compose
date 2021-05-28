@@ -194,7 +194,7 @@ export class carousel extends Component {
                                         autoComplete="off"
                                         onChange={e => this.handleInputChange(e, i)}
                                         />
-                                        <p className="inputlabel">Postback Description</p>
+                                        <p className="inputlabel">Description</p>
                                         <input
                                         className="dropme"
                                         name="description"

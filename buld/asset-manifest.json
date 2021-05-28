@@ -2,8 +2,8 @@
   "files": {
     "static/js/0.b9109c34.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/0.b9109c34.chunk.js",
     "static/js/0.b9109c34.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/0.b9109c34.chunk.js.map",
-    "static/js/1.ee278ecb.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/1.ee278ecb.chunk.js",
-    "static/js/1.ee278ecb.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/1.ee278ecb.chunk.js.map",
+    "static/js/1.96fca180.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/1.96fca180.chunk.js",
+    "static/js/1.96fca180.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/1.96fca180.chunk.js.map",
     "static/js/2.4010ef06.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/2.4010ef06.chunk.js",
     "static/js/2.4010ef06.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/2.4010ef06.chunk.js.map",
     "static/js/3.bac34b83.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/3.bac34b83.chunk.js",
@@ -23,8 +23,8 @@
     "main.css": "https://vdev.ameyo.net:8786/chat-compose/buld/static/css/main.ce8b54a4.chunk.css",
     "main.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/main.6cb0903a.chunk.js",
     "main.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/main.6cb0903a.chunk.js.map",
-    "runtime-main.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/runtime-main.3cfd8dbb.js",
-    "runtime-main.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/runtime-main.3cfd8dbb.js.map",
+    "runtime-main.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/runtime-main.7a8e0ed9.js",
+    "runtime-main.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/runtime-main.7a8e0ed9.js.map",
     "static/css/12.3c434353.chunk.css": "https://vdev.ameyo.net:8786/chat-compose/buld/static/css/12.3c434353.chunk.css",
     "static/js/12.599f8653.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/12.599f8653.chunk.js",
     "static/js/12.599f8653.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/12.599f8653.chunk.js.map",
@@ -37,7 +37,7 @@
     "static/media/styles.css": "https://vdev.ameyo.net:8786/chat-compose/buld/static/media/tile.fbe7a47e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.3cfd8dbb.js",
+    "static/js/runtime-main.7a8e0ed9.js",
     "static/css/12.3c434353.chunk.css",
     "static/js/12.599f8653.chunk.js",
     "static/css/main.ce8b54a4.chunk.css",
