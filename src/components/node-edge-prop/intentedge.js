@@ -60,6 +60,9 @@ export class EdgeProp extends Component {
         const list = [...this.state.rowChip];
         list.splice(index, 1);
         this.setState({rowChip:list});
+        let a = {rowChip:list,examples:list.map((e,i)=>e.example)};
+        let obj = Object.assign({}, this.state.element.data, a);
+        this.setState({element:{...this.state.element,data:{...obj}}}); 
       };
      
       // handle click event of the Add button
