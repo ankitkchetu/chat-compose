@@ -113,14 +113,14 @@ const nodeTypes = NodeTypes;
         const incId =  '' + getIdEdge();
         let edgeLabel = 'Intent Name ' + incId;
         let edgeId = 'intent_' + incId;
-
-        this.setState({elements:addEdge({ ...params, animated: false,label: edgeLabel, data:{label: edgeLabel,type:"edge"}, id: edgeId, arrowHeadType: 'arrow',...Typeedge }, this.state.elements)});
+        Typeedge["style"] = { stroke: 'blue' };
+        this.setState({elements:addEdge({ ...params, animated: false,label: edgeLabel, data:{label: edgeLabel,type:"edge",subtype:"intent"}, id: edgeId, arrowHeadType: 'arrow',...Typeedge }, this.state.elements)});
       } else {
         const incId =  '' + getIdEdge();
         let edgeLabel = '';
         let edgeId = 'flow_' + incId;
 
-        this.setState({elements:addEdge({ ...params, animated: false,label: edgeLabel,data:{label: edgeLabel, type:"edge"}, id: edgeId, arrowHeadType: 'arrow',...Typeedge }, this.state.elements)});
+        this.setState({elements:addEdge({ ...params, animated: false,label: edgeLabel,data:{label: edgeLabel, type:"edge",subtype:"Normal"}, id: edgeId, arrowHeadType: 'arrow',...Typeedge }, this.state.elements)});
       }
     };
 

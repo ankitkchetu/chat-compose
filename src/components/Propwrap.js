@@ -63,10 +63,18 @@ export class Propwrap extends Component {
     }
     render() {
         if(this.state.element&&this.state.element.data){
-            
             if(this.state.element&&this.state.element.data.type === 'edge') {
+                if(this.state.element.data.subtype==='intent'){
+                    const DynamicComponent = lazy(() => import(`./node-edge-prop/${this.state.element.data.subtype}edge`));
+                return (
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <DynamicComponent element={this.state.element} updateNodeCb={this.updateText1} />
+                    </Suspense>
+                )
+                }else{
                 return (<EdgeProp element={this.state.element} updateNodeCb={this.updateText1}
                 />)
+                }
             }else{
                 const DynamicComponent = lazy(() => import(`./node-edge-prop/${this.state.element.data.subtype}`));
                 return (

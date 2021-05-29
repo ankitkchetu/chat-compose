@@ -8,7 +8,7 @@ export class EdgeProp extends Component {
             updateNodeCb:props.updateNodeCb,
             clicked:'dataprop',
             nameArray:props.nameArray,
-            rowChip:(props.element&&props.element.data.rowChip)||[{image:"",text:"",description:""}],
+            rowChip:(props.element&&props.element.data.examples)||[{example:""}],
             theme:"light",
             language:"javascript",
             isEditorReady:false
@@ -22,7 +22,7 @@ export class EdgeProp extends Component {
                 updateNodeCb:nextProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:nextProps.nameArray,
-                rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{image:"",text:"",description:""}]
+                rowChip:(nextProps.element&&nextProps.element.data.examples)||[{example:""}]
 
             });
 
@@ -37,7 +37,7 @@ export class EdgeProp extends Component {
                 updateNodeCb:prevProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:prevProps.nameArray,
-                rowChip:(prevProps.element&&prevProps.element.data.rowChip)||[{image:"",text:"",description:""}]
+                rowChip:(prevProps.element&&prevProps.element.data.examples)||[{example:""}]
 
             });
         }
@@ -49,11 +49,10 @@ export class EdgeProp extends Component {
         const list = [...this.state.rowChip];
         list[index][name] = value;
         this.setState({rowChip:list});
-        if(this.state.element.data.subtype==='suggestionchip'||this.state.element.data.subtype==='carousel'){
-            let a = {rowChip:list};
-            let obj = Object.assign({}, this.state.element.data, a);
-            this.setState({element:{...this.state.element,data:{...obj}}}); 
-        }
+        let a = {examples:list};
+        let obj = Object.assign({}, this.state.element.data, a);
+        this.setState({element:{...this.state.element,data:{...obj}}}); 
+
       };
      
       // handle click event of the Remove button
@@ -65,7 +64,7 @@ export class EdgeProp extends Component {
      
       // handle click event of the Add button
     handleAddClick() {
-        this.setState({rowChip:[...this.state.rowChip, { image: "", text: "",description:"" }]});
+        this.setState({rowChip:[...this.state.rowChip, { example:"" }]});
       };
 
     _handleClick(evt){
@@ -174,58 +173,34 @@ export class EdgeProp extends Component {
                         >Logs</div>
                     </div>
                     <div className={this.state.clicked==='dataprop' ? 'proplist' : "proplist hidden"}>
+                        <p className="inputlabel">Name</p>
+                        <input className="dropme" id='id_label' type="text" value={(this.state.element&&this.state.element.data&&this.state.element.data.label)||''} 
+                        onChange={this.handlerChange.bind(this)}
+                        />
+                        <p className="inputlabel">Examples</p>
+                        {(this.state.element&&this.state.element.data)&&this.state.rowChip.map((x, i) => {
+                                    return (
+                                    <div key={`card_`+i} className="box">
+                                        <p className="inputlabel">Example Text {i+1}</p>
+                                        <input
+                                        className="dropme"
+                                        name="example"
+                            placeholder='Enter Example Text'
+                                        value={x.example}
+                                        maxLength="25"
+                                        autoComplete="off"
+                                        onChange={e => this.handleInputChange(e, i)}
+                                        />
+                                        <div className="btn-box">
+                                        {this.state.rowChip.length !== 1 && <button
+                                            className="mr10"
+                                            onClick={() => this.handleRemoveClick(i)}>Remove</button>}
+                                        {this.state.rowChip.length - 1 === i&&this.state.rowChip.length <= 8 && <button onClick={this.handleAddClick.bind(this)}>Add</button>}
+                                        </div>
+                                    </div>
+                                    );
+                                })}
                         
-                        <p className="inputlabel">Edge Type</p>
-                        <select className="dropme" id="subtype"
-                            value={(this.state.element&&this.state.element.data&&this.state.element.data.subtype)||'Normal'} 
-                            onChange={this.handleChange.bind(this)} 
-                        >
-                            <option value="Normal">Normal</option>
-                            <option value="Conditional">Conditional</option>
-                        </select>
-                        
-                        {(() => {
-                            if ((this.state.element&&this.state.element.data)&&this.state.element.data.subtype==='Conditional') {
-                            return (
-                                <>
-                                <p className="inputlabel">Name</p>
-                                <input className="dropme" id='id_label' type="text" value={(this.state.element&&this.state.element.data&&this.state.element.data.label)||''} 
-                                onChange={this.handlerChange.bind(this)}
-                                />
-                                <p className="inputlabel">Slot Variable</p>
-                                <input className="dropme" id='Slot_Variable' type="text" value={(this.state.element&&this.state.element.data&&this.state.element.data.Slot_Variable)||''} 
-                                onChange={this.handlerChange.bind(this)}
-                                />
-                                <p className="inputlabel">Comparison Type</p>
-                                <select className="dropme" id="Comparison_Type"
-                                    value={(this.state.element&&this.state.element.data&&this.state.element.data.Comparison_Type)||'=='} 
-                                    onChange={this.handleChange.bind(this)} 
-                                >
-                                    <option value="<=">&#60;=</option>
-                                    <option value="==">==</option>
-                                    <option value="!=">!=</option>
-                                    <option value="=>">=></option>
-                                    <option value=">">&#62;</option>
-                                    <option value="<">&#60;</option>
-                                </select>
-                                <p className="inputlabel">Comparison Value</p>
-                                <input className="dropme" id='Comparison_Value' type="text" value={(this.state.element&&this.state.element.data&&this.state.element.data.Comparison_Value)||''} 
-                                onChange={this.handlerChange.bind(this)}
-                                />
-
-                                </>
-                            )
-                            } else {
-                            return (
-                                <></>
-                            )
-                            }
-                        })()}
-                        {/* <p className="inputlabel">Check properties</p>
-                        {JSON.stringify(this.state.element)}
-                        <div className="dropme">All<img src="assets/dropdown.svg" alt="all"/></div>
-                        <div className="checkus"><img src="assets/checkon.svg" alt="checkon"/><p>Log on successful performance</p></div>
-                        <div className="checkus"><img src="assets/checkoff.svg" alt="checkoff"/><p>Give priority to this block</p></div> */}
                     </div>
                     <div className={this.state.clicked==='alertprop' ? 'proplist' : "proplist hidden"}>
                         <div className="checkus"><p>Development inprogress</p></div>
