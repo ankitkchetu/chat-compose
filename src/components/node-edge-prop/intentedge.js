@@ -187,7 +187,7 @@ export class EdgeProp extends Component {
                                         name="example"
                             placeholder='Enter Example Text'
                                         value={x.example}
-                                        maxLength="25"
+                                        // maxLength="250"
                                         autoComplete="off"
                                         onChange={e => this.handleInputChange(e, i)}
                                         />
