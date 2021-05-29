@@ -49,7 +49,7 @@ export class EdgeProp extends Component {
         const list = [...this.state.rowChip];
         list[index][name] = value;
         this.setState({rowChip:list});
-        let a = {examples:list};
+        let a = {rowChip:list,examples:list.map((e,i)=>e.example)};
         let obj = Object.assign({}, this.state.element.data, a);
         this.setState({element:{...this.state.element,data:{...obj}}}); 
 

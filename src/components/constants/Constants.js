@@ -131,5 +131,24 @@ export const leftPalateConstants = {
  };
 
 
- export const initialCanvasValue = [{"id":"dndnode_0","type":"selectorNodeStart","position":{"x":-30,"y":-360},"label":"Start","data":{"label":"Start","description":"Next node should be either Bot Send or Actions nodes","subtype":"start","type":"node","image":"eye.svg","class":"blockyGrey","var_name":"start"}},{"id":"dndnode_1","type":"selectorUserInput","position":{"x":-180,"y":-180},"label":"User Input","data":{"label":"User Input","description":"Next should be either Bot Send or Actions nodes","subtype":"userinput","type":"node","image":"eye.svg","class":"blockyGreen"}},{"id":"dndnode_2","type":"selectorText","position":{"x":-180,"y":60},"label":"Text","data":{"label":"Text","description":"Next should be User Input","subtype":"text","type":"node","image":"eye.svg","class":"blockyBlue"}},{"source":"dndnode_1","sourceHandle":"b","target":"dndnode_2","targetHandle":"a","animated":false,"label":"Intent Name edge_1","data":{"label":"Intent Name edge_1","type":"edge","subtype":"intent","examples":[{"description":"","example":"ankiy"},{"example":"asbamsnads"},{"example":"sdsfdsf"}]},"id":"intent_edge_1","arrowHeadType":"arrowclosed","type":"smoothstep","style":{"stroke":"blue"}}]
+ export const initialCanvasValue = [
+   {
+      "id":"dndnode_0",
+      "type":"selectorNodeStart",
+      "position":{
+         "x":210,
+         "y":60
+      },
+      "label":"Start",
+      "data":{
+         "label":"Start",
+         "description":"Next node should be either Bot Send or Actions nodes",
+         "subtype":"start",
+         "type":"node",
+         "image":"eye.svg",
+         "class":"blockyGrey",
+         "var_name":"start"
+      }
+   }
+];
 
