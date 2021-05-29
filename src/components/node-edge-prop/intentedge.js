@@ -173,7 +173,7 @@ export class EdgeProp extends Component {
                         >Logs</div>
                     </div>
                     <div className={this.state.clicked==='dataprop' ? 'proplist' : "proplist hidden"}>
-                        <p className="inputlabel">Name</p>
+                        <p className="inputlabel">Display Name</p>
                         <input className="dropme" id='id_label' type="text" value={(this.state.element&&this.state.element.data&&this.state.element.data.label)||''} 
                         onChange={this.handlerChange.bind(this)}
                         />

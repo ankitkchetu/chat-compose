@@ -188,7 +188,7 @@ export class EdgeProp extends Component {
                             if ((this.state.element&&this.state.element.data)&&this.state.element.data.subtype==='Conditional') {
                             return (
                                 <>
-                                <p className="inputlabel">Name</p>
+                                <p className="inputlabel">Display Name</p>
                                 <input className="dropme" id='id_label' type="text" value={(this.state.element&&this.state.element.data&&this.state.element.data.label)||''} 
                                 onChange={this.handlerChange.bind(this)}
                                 />
