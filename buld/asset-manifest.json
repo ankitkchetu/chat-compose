@@ -1,7 +1,7 @@
 {
   "files": {
-    "static/js/0.d52faa12.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/0.d52faa12.chunk.js",
-    "static/js/0.d52faa12.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/0.d52faa12.chunk.js.map",
+    "static/js/0.81e21ac3.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/0.81e21ac3.chunk.js",
+    "static/js/0.81e21ac3.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/0.81e21ac3.chunk.js.map",
     "static/js/1.8ccf455a.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/1.8ccf455a.chunk.js",
     "static/js/1.8ccf455a.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/1.8ccf455a.chunk.js.map",
     "static/js/2.57cdb4a4.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/2.57cdb4a4.chunk.js",
@@ -12,8 +12,8 @@
     "static/js/4.a056858e.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/4.a056858e.chunk.js.map",
     "static/js/5.2cad08ab.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/5.2cad08ab.chunk.js",
     "static/js/5.2cad08ab.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/5.2cad08ab.chunk.js.map",
-    "static/js/6.4c9f4d0f.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/6.4c9f4d0f.chunk.js",
-    "static/js/6.4c9f4d0f.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/6.4c9f4d0f.chunk.js.map",
+    "static/js/6.7a04c5ea.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/6.7a04c5ea.chunk.js",
+    "static/js/6.7a04c5ea.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/6.7a04c5ea.chunk.js.map",
     "static/js/7.5bd327c1.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/7.5bd327c1.chunk.js",
     "static/js/7.5bd327c1.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/7.5bd327c1.chunk.js.map",
     "static/js/8.f050a7c8.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/8.f050a7c8.chunk.js",
@@ -25,8 +25,8 @@
     "main.css": "https://vdev.ameyo.net:8786/chat-compose/buld/static/css/main.ce8b54a4.chunk.css",
     "main.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/main.7891bc39.chunk.js",
     "main.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/main.7891bc39.chunk.js.map",
-    "runtime-main.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/runtime-main.3c7a6dc7.js",
-    "runtime-main.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/runtime-main.3c7a6dc7.js.map",
+    "runtime-main.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/runtime-main.6bc99058.js",
+    "runtime-main.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/runtime-main.6bc99058.js.map",
     "static/css/13.3c434353.chunk.css": "https://vdev.ameyo.net:8786/chat-compose/buld/static/css/13.3c434353.chunk.css",
     "static/js/13.692bbb0d.chunk.js": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/13.692bbb0d.chunk.js",
     "static/js/13.692bbb0d.chunk.js.map": "https://vdev.ameyo.net:8786/chat-compose/buld/static/js/13.692bbb0d.chunk.js.map",
@@ -39,7 +39,7 @@
     "static/media/styles.css": "https://vdev.ameyo.net:8786/chat-compose/buld/static/media/tile.fbe7a47e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.3c7a6dc7.js",
+    "static/js/runtime-main.6bc99058.js",
     "static/css/13.3c434353.chunk.css",
     "static/js/13.692bbb0d.chunk.js",
     "static/css/main.ce8b54a4.chunk.css",

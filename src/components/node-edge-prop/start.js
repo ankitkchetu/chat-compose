@@ -199,7 +199,7 @@ export class start extends Component {
                                         {this.state.bot_slots.length !== 1 && <button
                                             className="mr10"
                                             onClick={() => this.handleRemoveClick(i)}>Remove</button>}
-                                        {this.state.bot_slots.length - 1 === i&&this.state.bot_slots.length <= 8 && <button onClick={this.handleAddClick.bind(this)}>Add</button>}
+                                        {this.state.bot_slots.length - 1 === i&& <button onClick={this.handleAddClick.bind(this)}>Add</button>}
                                         </div>
                                     </div>
                                     );

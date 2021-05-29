@@ -198,7 +198,7 @@ export class EdgeProp extends Component {
                                         {this.state.rowChip.length !== 1 && <button
                                             className="mr10"
                                             onClick={() => this.handleRemoveClick(i)}>Remove</button>}
-                                        {this.state.rowChip.length - 1 === i&&this.state.rowChip.length <= 8 && <button onClick={this.handleAddClick.bind(this)}>Add</button>}
+                                        {this.state.rowChip.length - 1 === i&& <button onClick={this.handleAddClick.bind(this)}>Add</button>}
                                         </div>
                                     </div>
                                     );
