@@ -8,7 +8,7 @@ export class EdgeProp extends Component {
             updateNodeCb:props.updateNodeCb,
             clicked:'dataprop',
             nameArray:props.nameArray,
-            rowChip:(props.element&&props.element.data.examples)||[{example:""}],
+            rowChip:(props.element&&props.element.data.rowChip)||[{example:""}],
             theme:"light",
             language:"javascript",
             isEditorReady:false
@@ -22,7 +22,7 @@ export class EdgeProp extends Component {
                 updateNodeCb:nextProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:nextProps.nameArray,
-                rowChip:(nextProps.element&&nextProps.element.data.examples)||[{example:""}]
+                rowChip:(nextProps.element&&nextProps.element.data.rowChip)||[{example:""}]
 
             });
 
@@ -37,7 +37,7 @@ export class EdgeProp extends Component {
                 updateNodeCb:prevProps.updateNodeCb,
                 clicked:'dataprop',
                 nameArray:prevProps.nameArray,
-                rowChip:(prevProps.element&&prevProps.element.data.examples)||[{example:""}]
+                rowChip:(prevProps.element&&prevProps.element.data.rowChip)||[{example:""}]
 
             });
         }
