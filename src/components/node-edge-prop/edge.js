@@ -143,6 +143,17 @@ export class EdgeProp extends Component {
     handleChange(e){
         let a = {};
         a[e.target.id]=e.target.value;
+        if(e.target.id==='subtype'){
+            if(e.target.value==="Conditional"){
+            console.log('HI');
+            if(this.state.element.data.Comparison_Type===undefined){
+            let b = {Comparison_Type: "==",
+            Slot_Variable: "",
+            label: ""};
+            a = {...a,...b};
+            }
+            }
+        }
         
         var obj = Object.assign({}, this.state.element.data, a);
         console.log(obj);
