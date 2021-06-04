@@ -1,4 +1,5 @@
 import React, {Component } from 'react';
+import axios from 'axios';
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
@@ -281,7 +282,27 @@ const nodeTypes = NodeTypes;
       element.href = URL.createObjectURL(textFile);
       element.download = "userFile.json";
       document.body.appendChild(element); 
-      element.click();
+      element.click();      
+    }  
+    onPublishUsingApi(data){
+      console.log('updateNodeCbAPIupdateNodeCbAPI',data);
+      let textFile = this.state.reactFlowInstance.toObject().elements;
+      //const article = { title: 'React POST Request Example',data:textFile };
+      // const headers = { 
+      //     'Authorization': 'Bearer my-token',
+      //     'My-Custom-Header': 'foobar'
+      // };
+      const headers = {};
+      let payload = {
+        ...data,
+        "bot_diagram": {"graph":textFile}
+      }
+      //let bot_id = prompt("Please enter your name", "bik1");
+      let Url = 'https://voicebot.ameyo.net:9075/api/v1/bot/'+data.bot_id;
+      axios.post(Url, payload, { headers })
+          .then(response => console.log(response.data.id )).catch(err=>console.error(err));
+
+      
     }  
 
     updateEdgeText(old,newEl,type){ 
@@ -374,7 +395,7 @@ const nodeTypes = NodeTypes;
         return (
          
             <ReactFlowProvider>
-               <Navigation publishClick={this.onSaveAndPublishClick.bind(this)} configUpdate={this.configUpdate.bind(this)}/>
+               <Navigation publishClick={this.onSaveAndPublishClick.bind(this)} onPublishUsingApi={this.onPublishUsingApi.bind(this)} configUpdate={this.configUpdate.bind(this)}/>
                <Propwrap element={this.state.element} nameArray={this.state.NameArray} updateNodeCb={this.updateEdgeText.bind(this)} />
               <div className="sectionLeft dndflow reactflow-wrapper nested" ref={this.state.reactFlowWrapper}>
                <ReactFlow 
