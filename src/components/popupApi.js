@@ -46,7 +46,7 @@ export class PopupApi extends React.Component {
                         <Form onSubmit={this.handleSubmit} id="form-input">
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label className = "inputlabel">bot_id</Form.Label>
-                            <Form.Control name = "bot_id" className = "dropme2" type="text" required/>
+                            <Form.Control name = "bot_id" pattern= "[a-z0-9]+" title="Only [a-z0-9] character allowed" className = "dropme2" type="text" required/>
                             {/* <Form.Label className = "inputlabel">Version</Form.Label>
                             <Form.Control name = "bot_diagram_schema_version" className = "dropme2" type="text" required/> */}
                             <Form.Label className = "inputlabel">description</Form.Label>

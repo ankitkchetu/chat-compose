@@ -12,7 +12,7 @@ import ReactFlow, {
 import {Propwrap} from './Propwrap'
 import {Navigation} from './Navigation'
 
-import {initialCanvasValue,NodeTypes} from './constants/Constants'; 
+import {initialCanvasValue,NodeTypes,botApiURL} from './constants/Constants'; 
 import ls from 'local-storage'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
@@ -298,9 +298,30 @@ const nodeTypes = NodeTypes;
         "bot_diagram": {"graph":textFile}
       }
       //let bot_id = prompt("Please enter your name", "bik1");
-      let Url = 'https://voicebot.ameyo.net:9075/api/v1/bot/'+data.bot_id;
+      let Url = botApiURL+'/bot/'+data.bot_id;
       axios.post(Url, payload, { headers })
-          .then(response => console.log(response.data.id )).catch(err=>console.error(err));
+          .then(response => {
+            confirmAlert({
+              title: 'Success',
+              message: "Data synced successfully!",
+              buttons: [
+                {
+                  label: 'Ok'
+                }
+              ]
+            });
+          }).catch(err=>{
+            console.error(err);
+            confirmAlert({
+              title: 'Alert',
+              message: "Something went wrong. please refer the logs",
+              buttons: [
+                {
+                  label: 'Ok'
+                }
+              ]
+            });
+          });
 
       
     }  

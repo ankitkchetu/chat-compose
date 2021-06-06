@@ -1,6 +1,9 @@
 import React from 'react';
 import {Form,Button} from 'react-bootstrap';
 import axios from 'axios';
+import {botApiURL} from './constants/Constants'; 
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 export class PopupApiImport extends React.Component {
       constructor(props) {
         super(props)
@@ -24,15 +27,25 @@ export class PopupApiImport extends React.Component {
           // value
           if(value.bot_id!==''){
             console.log(value);
-            let Url = 'https://voicebot.ameyo.net:9075/api/v1/bot/'+value.bot_id+'/latest';
+            let Url = botApiURL+'/bot/'+value.bot_id+'/latest';
             let headers = {};
             axios.get(Url,{ headers })
           .then(response => {
-            this.state.configUpdate(response.bot_diagram.graph);
+            console.log(response);
+            this.state.configUpdate(response.data.bot_diagram.graph);
             this.props.closePopup();
           }).catch(err=>{
             console.error(err);
             this.props.closePopup();
+            confirmAlert({
+              title: 'Alert',
+              message: "Something went wrong. please refer the logs",
+              buttons: [
+                {
+                  label: 'Ok'
+                }
+              ]
+            });
           });
           
           // this.state.configUpdate(value);
@@ -52,7 +65,7 @@ export class PopupApiImport extends React.Component {
                         <Form onSubmit={this.handleSubmit} id="form-input">
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label className = "inputlabel">bot_id</Form.Label>
-                            <Form.Control name = "bot_id" className = "dropme2" type="text" required/>
+                            <Form.Control name = "bot_id"  pattern= "[a-z0-9]+" title="Only [a-z0-9] character allowed" className = "dropme2" type="text" required/>
                             
                         </Form.Group>
                         <div class="react-confirm-alert-button-group">

@@ -151,4 +151,5 @@ export const leftPalateConstants = {
       }
    }
 ];
+export const botApiURL = "https://voicebot.ameyo.net:9075/api/v1";
 
