@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Popup} from './popup'
 import {PopupApi} from './popupApi'
 import {PopupApiImport} from './popupApiImport'
+import {PopupApiDeploy} from './popupApiDeploy'
+
 export class Navigation extends Component {
   constructor(props) {
       super(props)
@@ -11,17 +13,24 @@ export class Navigation extends Component {
           configUpdate: props.configUpdate,
           showPopup: false,
           PopupApi:false,
-          PopupApiImport:false
+          PopupApiImport:false,
+          bot:props.botParams,
       };
   }
+  componentWillReceiveProps(nextProps){
+        this.setState({
+          bot:nextProps.botParams,
+        });
+}
   _download (evt) {
     this.state.updateNodeCb();
 
     return true
 }
 
-_apiPublish (data) {
-  this.state.updateNodeCbAPI(data);
+_apiDeploy (data) {
+  console.log(data);
+  this.setState({bot:data});
   return true
 }
 PopupApi() {
@@ -32,6 +41,11 @@ PopupApi() {
 PopupApiImport() {
   this.setState({
     PopupApiImport: !this.state.PopupApiImport
+  });
+}
+PopupApiDeploy() {
+  this.setState({
+    PopupApiDeploy: !this.state.PopupApiDeploy
   });
 }
 togglePopup() {
@@ -65,6 +79,8 @@ togglePopup() {
                 <button id='publish' onClick={this.PopupApiImport.bind(this)}>Import Api</button>
                 <div id="publish" onClick={this._download.bind(this)}>Download Config</div>
                 <div id="publish" onClick={this.PopupApi.bind(this)}>Publish Using Api</div>
+                {this.state.bot&&this.state.bot.id ? <div id="publish" onClick={this.PopupApiDeploy.bind(this)}>Deploy</div>: null
+                }
             </div>
             {this.state.showPopup ? 
               <Popup
@@ -78,6 +94,7 @@ togglePopup() {
               <PopupApi
                 text='Close Me'
                 configUpdate={this.state.updateNodeCbAPI}
+                _apiDeploy={this.state._apiDeploy}
                 closePopup={this.PopupApi.bind(this)}
               />
               : null
@@ -87,6 +104,15 @@ togglePopup() {
                 text='Close Me'
                 configUpdate={this.state.configUpdate}
                 closePopup={this.PopupApiImport.bind(this)}
+              />
+              : null
+            }
+            {this.state.PopupApiDeploy ? 
+              <PopupApiDeploy
+                text='Close Me'
+                bot={this.state.bot}
+                configUpdate={this.state.updateNodeCbAPI}
+                closePopup={this.PopupApiDeploy.bind(this)}
               />
               : null
             }

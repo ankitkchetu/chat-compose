@@ -1,11 +1,12 @@
 import React from 'react';
 import {Form,Button} from 'react-bootstrap';
-export class PopupApi extends React.Component {
+export class PopupApiDeploy extends React.Component {
       constructor(props) {
         super(props)
         this.state ={
             configUpdate: props.configUpdate,
             _apiDeploy:props._apiDeploy,
+            bot:props.bot,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
       }
@@ -17,12 +18,12 @@ export class PopupApi extends React.Component {
         }else{
           event.preventDefault();
           event.stopPropagation();
-          let value = {bot_id:"",bot_type:"chat",description:"",bot_diagram_schema_version:"V1"}
+          let value = {bot_id:"",id:"chat",deploy:1}
           if(document.getElementsByName('bot_id')[0].value){
             value.bot_id=document.getElementsByName('bot_id')[0].value;
           }
-          if(document.getElementsByName('bot_description')[0].value){
-            value.description=document.getElementsByName('bot_description')[0].value;
+          if(document.getElementsByName('id')[0].value){
+            value.id=document.getElementsByName('id')[0].value;
           }
           // if(document.getElementsByName('bot_diagram_schema_version')[0].value){
           //   value.bot_diagram_schema_version=document.getElementsByName('bot_diagram_schema_version')[0].value;
@@ -43,15 +44,15 @@ export class PopupApi extends React.Component {
           
                 <div class="react-confirm-alert">
                     <div class="react-confirm-alert-body">
-                        <h1>Add Publish Settings</h1>
+                        <h1>Deployment Settings</h1>
                         <Form onSubmit={this.handleSubmit} id="form-input">
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label className = "inputlabel">bot_id</Form.Label>
-                            <Form.Control name = "bot_id" pattern= "[a-z0-9]+" title="Only [a-z0-9] character allowed" className = "dropme2" type="text" required/>
+                            <Form.Label className = "inputlabel">id</Form.Label>
+                            <Form.Control name = "id" pattern= "[a-z0-9-]+" value = {this.state.bot.id} title="Only [a-z0-9] character allowed" className = "dropme2" type="text" required/>
                             {/* <Form.Label className = "inputlabel">Version</Form.Label>
                             <Form.Control name = "bot_diagram_schema_version" className = "dropme2" type="text" required/> */}
-                            <Form.Label className = "inputlabel">description</Form.Label>
-                            <Form.Control name = "bot_description" className = "dropme2" type="text" required/>
+                            <Form.Label className = "inputlabel">bot_id</Form.Label>
+                            <Form.Control name = "bot_id" value = {this.state.bot.bot_id} className = "dropme2" type="text" required/>
                             
                         </Form.Group>
                         <div class="react-confirm-alert-button-group">
@@ -72,4 +73,4 @@ export class PopupApi extends React.Component {
       );
     }
   }
-  export default PopupApi
+  export default PopupApiDeploy

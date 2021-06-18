@@ -45,7 +45,8 @@ const nodeTypes = NodeTypes;
           state:{element:null},
           elements:data,
           NameArray:NameArray,
-          reactFlowWrapper:React.createRef()
+          reactFlowWrapper:React.createRef(),
+          bot:{}
 
         };
       }
@@ -286,6 +287,34 @@ const nodeTypes = NodeTypes;
     }  
     onPublishUsingApi(data){
       console.log('updateNodeCbAPIupdateNodeCbAPI',data);
+      if(data.deploy){
+        console.log("deploy",data);
+        let Url = botApiURL+'/bot/'+data.bot_id+'/'+data.id;
+      axios.post(Url,{}, { })
+          .then(response => {
+            confirmAlert({
+              title: 'Success',
+              message: "Deployed successfully!",
+              buttons: [
+                {
+                  label: 'Ok'
+                }
+              ]
+            });
+          }).catch(err=>{
+            console.error(err);
+            confirmAlert({
+              title: 'Alert',
+              message: "Error in deployment. please refer the logs",
+              buttons: [
+                {
+                  label: 'Ok'
+                }
+              ]
+            });
+          });
+      }else{
+        
       let textFile = this.state.reactFlowInstance.toObject().elements;
       //const article = { title: 'React POST Request Example',data:textFile };
       // const headers = { 
@@ -301,6 +330,7 @@ const nodeTypes = NodeTypes;
       let Url = botApiURL+'/bot/'+data.bot_id;
       axios.post(Url, payload, { headers })
           .then(response => {
+            this.setState({bot:{bot_id:response.data.bot_id,id:response.data.id}});
             confirmAlert({
               title: 'Success',
               message: "Data synced successfully!",
@@ -322,6 +352,7 @@ const nodeTypes = NodeTypes;
               ]
             });
           });
+        }
 
       
     }  
@@ -416,7 +447,7 @@ const nodeTypes = NodeTypes;
         return (
          
             <ReactFlowProvider>
-               <Navigation publishClick={this.onSaveAndPublishClick.bind(this)} onPublishUsingApi={this.onPublishUsingApi.bind(this)} configUpdate={this.configUpdate.bind(this)}/>
+               <Navigation botParams = {this.state.bot} publishClick={this.onSaveAndPublishClick.bind(this)} onPublishUsingApi={this.onPublishUsingApi.bind(this)} configUpdate={this.configUpdate.bind(this)}/>
                <Propwrap element={this.state.element} nameArray={this.state.NameArray} updateNodeCb={this.updateEdgeText.bind(this)} />
               <div className="sectionLeft dndflow reactflow-wrapper nested" ref={this.state.reactFlowWrapper}>
                <ReactFlow 
