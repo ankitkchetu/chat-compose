@@ -1,6 +1,7 @@
 import React from 'react'
-import {Leftcard} from './components/Leftcard'
-import CanvasDiv from './components/CanvasDiv'
+import Home from './components/Home'
+import {Route, Switch } from 'react-router-dom';
+
 
 
 
@@ -9,10 +10,12 @@ import './asserts/flowy.min.css';
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <Leftcard />
-        <CanvasDiv />
-      </div>  
+      <main>
+            <Switch>
+                <Route path="/" component={Home} exact />
+                <Route path="/bot/:bot_id" component={Home} />
+            </Switch>
+      </main> 
     )
   }
 }

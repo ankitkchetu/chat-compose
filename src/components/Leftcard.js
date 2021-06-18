@@ -62,11 +62,11 @@ export class Leftcard extends Component {
         return (
             <div id="leftcard">
                 <div id="closecard">
-                    <img src="assets/closeleft.svg" alt="close"/>
+                    <img src="/assets/closeleft.svg" alt="close"/>
                 </div>
                 <p id="header">Blocks</p>
                 <div id="search">
-                    <img src="assets/search.svg" alt="search"/>
+                    <img src="/assets/search.svg" alt="search"/>
                     <input type="text" placeholder="Search blocks" onChange={this.filterList}/>
                 </div>
                 <div id="subnav">
@@ -82,12 +82,12 @@ export class Leftcard extends Component {
                             return (
                                 <div key={`menu_compo`+i+'_'+iNested} className="blockelem create-flowy noselect" onDragStart={(event) => this.onDragStart(event, item.type, JSON.stringify(item))}  draggable>
                                     <div className="grabme">
-                                        <img src="assets/grabme.svg" alt="grabme"/>
+                                        <img src="/assets/grabme.svg" alt="grabme"/>
                                     </div>
                                     <div className="blockin">
                                         <div className="blockico">
                                             <span></span>
-                                            <img src={`assets/${item.image}`} alt={item.image}/>
+                                            <img src={`/assets/${item.image}`} alt={item.image}/>
                                         </div>
                                         <div className="blocktext">
                                             <p className="blocktitle">{item.label}</p>

@@ -46,10 +46,16 @@ const nodeTypes = NodeTypes;
           elements:data,
           NameArray:NameArray,
           reactFlowWrapper:React.createRef(),
-          bot:{}
+          bot:{},
+          bot_id:props.bot_id
 
         };
       }
+      componentDidMount() {
+        if(this.state.bot_id){
+            this.setState({bot_id:this.state.bot_id})
+        }
+    }
       // componentDidUpdate(prevProps, prevState){
       // // componentWillReceiveProps = (nextProps) => {
       //   // if (nextProps.position !== this.props.position) {
@@ -369,12 +375,7 @@ const nodeTypes = NodeTypes;
           
         
       }
-      componentDidMount() {
 
-        
-      }
-
-    // componentDidMount() { console.log('called didMount'); }
     componentWillUpdate(prevProps, prevState) { 
       console.log('debug',this.state.nodeName,prevState.nodeName)
       if(this.state.nodeName!==prevState.nodeName){
@@ -447,7 +448,7 @@ const nodeTypes = NodeTypes;
         return (
          
             <ReactFlowProvider>
-               <Navigation botParams = {this.state.bot} publishClick={this.onSaveAndPublishClick.bind(this)} onPublishUsingApi={this.onPublishUsingApi.bind(this)} configUpdate={this.configUpdate.bind(this)}/>
+               <Navigation botParams = {this.state.bot} bot_id={this.state.bot_id} publishClick={this.onSaveAndPublishClick.bind(this)} onPublishUsingApi={this.onPublishUsingApi.bind(this)} configUpdate={this.configUpdate.bind(this)}/>
                <Propwrap element={this.state.element} nameArray={this.state.NameArray} updateNodeCb={this.updateEdgeText.bind(this)} />
               <div className="sectionLeft dndflow reactflow-wrapper nested" ref={this.state.reactFlowWrapper}>
                <ReactFlow 

@@ -15,13 +15,18 @@ export class Navigation extends Component {
           PopupApi:false,
           PopupApiImport:false,
           bot:props.botParams,
+          bot_id:props.bot_id
       };
   }
   componentWillReceiveProps(nextProps){
-        this.setState({
-          bot:nextProps.botParams,
-        });
-}
+    console.log('hiiiiiANKITTT',nextProps);
+        if(nextProps.bot_id){
+          
+          this.setState({
+            bot_id:nextProps.bot_id,
+          });
+        }
+  }
   _download (evt) {
     this.state.updateNodeCb();
 
@@ -61,7 +66,7 @@ togglePopup() {
             <div id="leftside">
               <div id="details">
                 <div id="back">
-                  <img src={"assets/arrow.svg"} alt="revskill10" />
+                  <img src={"/assets/arrow.svg"} alt="revskill10" />
                   </div>
                 <div id="names">
                     <p id="title">BOT Designer</p>
@@ -85,6 +90,7 @@ togglePopup() {
             {this.state.showPopup ? 
               <Popup
                 text='Close Me'
+                bot_id={this.state.bot_id}
                 configUpdate={this.state.configUpdate}
                 closePopup={this.togglePopup.bind(this)}
               />
@@ -93,6 +99,7 @@ togglePopup() {
             {this.state.PopupApi ? 
               <PopupApi
                 text='Close Me'
+                bot_id={this.state.bot_id}
                 configUpdate={this.state.updateNodeCbAPI}
                 _apiDeploy={this.state._apiDeploy}
                 closePopup={this.PopupApi.bind(this)}
@@ -102,6 +109,7 @@ togglePopup() {
             {this.state.PopupApiImport ? 
               <PopupApiImport
                 text='Close Me'
+                bot_id={this.state.bot_id}
                 configUpdate={this.state.configUpdate}
                 closePopup={this.PopupApiImport.bind(this)}
               />
@@ -110,6 +118,7 @@ togglePopup() {
             {this.state.PopupApiDeploy ? 
               <PopupApiDeploy
                 text='Close Me'
+                bot_id={this.state.bot_id}
                 bot={this.state.bot}
                 configUpdate={this.state.updateNodeCbAPI}
                 closePopup={this.PopupApiDeploy.bind(this)}

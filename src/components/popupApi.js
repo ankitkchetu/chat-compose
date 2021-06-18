@@ -6,8 +6,17 @@ export class PopupApi extends React.Component {
         this.state ={
             configUpdate: props.configUpdate,
             _apiDeploy:props._apiDeploy,
+            bot_id:props.bot_id
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+      }
+      componentWillReceiveProps(nextProps){
+        if(nextProps.bot_id){
+          
+          this.setState({
+            bot_id:nextProps.bot_id,
+          });
+        }
       }
       handleSubmit(event){
         const form = event.currentTarget;
@@ -41,20 +50,20 @@ export class PopupApi extends React.Component {
         <div className='popup'>
           <div className='popup_inner'>
           
-                <div class="react-confirm-alert">
-                    <div class="react-confirm-alert-body">
-                        <h1>Add Publish Settings</h1>
+                <div className="react-confirm-alert">
+                    <div className="react-confirm-alert-body">
+      <h1>Add Publish Settings</h1>
                         <Form onSubmit={this.handleSubmit} id="form-input">
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label className = "inputlabel">bot_id</Form.Label>
-                            <Form.Control name = "bot_id" pattern= "[a-z0-9]+" title="Only [a-z0-9] character allowed" className = "dropme2" type="text" required/>
+                            <Form.Control name = "bot_id" pattern= "[a-z0-9]+" title="Only [a-z0-9] character allowed" className = "dropme2" type="text" value={this.state.bot_id} required/>
                             {/* <Form.Label className = "inputlabel">Version</Form.Label>
                             <Form.Control name = "bot_diagram_schema_version" className = "dropme2" type="text" required/> */}
                             <Form.Label className = "inputlabel">description</Form.Label>
                             <Form.Control name = "bot_description" className = "dropme2" type="text" required/>
                             
                         </Form.Group>
-                        <div class="react-confirm-alert-button-group">
+                        <div className="react-confirm-alert-button-group">
                             <Button variant="primary" type="submit">
                                 Save
                             </Button>
