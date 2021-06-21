@@ -66,7 +66,7 @@ togglePopup() {
             <div id="leftside">
               <div id="details">
                 <div id="back">
-                  <img src={"/assets/arrow.svg"} alt="revskill10" />
+                  <img src={"assets/arrow.svg"} alt="revskill10" />
                   </div>
                 <div id="names">
                     <p id="title">BOT Designer</p>
