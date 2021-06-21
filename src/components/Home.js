@@ -8,13 +8,17 @@ import CanvasDiv from './CanvasDiv'
 class Home extends React.Component {
     constructor(props) {
         super(props);
+        let query = new URLSearchParams(this.props.location.search);
+        let token = query.get('bot_id')||null;
         this.state = {
-            bot_id:(this.props.match)?this.props.match.params.bot_id:null
+            bot_id:token
         };
       }
     componentDidMount() {
-        if(this.props.match.params.bot_id){
-            this.setState({bot_id:this.props.match.params.bot_id})
+      const query = new URLSearchParams(this.props.location.search);
+      let token = query.get('bot_id');
+        if(token){
+            this.setState({bot_id:token});
         }
     }
   

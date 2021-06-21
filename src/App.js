@@ -13,7 +13,6 @@ class App extends React.Component {
       <main>
             <Switch>
                 <Route path="/" component={Home} exact />
-                <Route path="/bot/:bot_id" component={Home} />
             </Switch>
       </main> 
     )
